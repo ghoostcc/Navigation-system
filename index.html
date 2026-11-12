@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>html{color-scheme:dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>我之所以是我 作品導覽</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: 手機優先的單欄導覽;桌機把格子拉成 3–4 欄、作品頁分左右兩欄。
+   視覺為單一風格(深咖啡底 + 撕紙牛皮色),首頁用奶油色。 */
+:root{
+  --ink:#2b1f17;          /* 撕紙上的深字 */
+  --paper:#f1dac6;        /* 撕紙頁首 */
+  --paper-2:#e6c9a6;      /* 標籤紙 */
+  --cream:#fbe8d5;        /* 首頁底 */
+  --card:#f8e0cb;         /* 首頁卡片 */
+  --brown:#8a5a2b;        /* 搜尋鈕 */
+  --night:#382d27;        /* 內頁底 */
+  --night-2:#2a2420;      /* 作品展示底 */
+  --text:#f3e6d6;
+  --muted:#c9b8a6;
+  --line:rgba(243,230,214,.28);
+  --font-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --font-brush:"LXGW WenKai TC","Kaiti TC","DFKai-SB",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--night);color:var(--text);font-family:var(--font-body);
+  font-size:16px;line-height:1.7;min-height:100vh;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.012) 0 1px,transparent 1px 5px);
+}
+body[data-route="home"]{background:var(--cream);background-image:none;color:var(--ink)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+body[data-route="home"]::before{background:var(--cream)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid #f0b36b;outline-offset:3px;border-radius:6px}
+svg{display:block}
+.wrap{width:100%;max-width:1040px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* ===== 撕紙頁首 ===== */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:96px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.top-bg{position:absolute;inset:0;background:linear-gradient(#f5e0cc,#eed2b8)}
+.top-in{position:relative;height:82px;display:flex;align-items:center;justify-content:space-between;max-width:1040px;margin-inline:auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top .ib{width:44px;height:44px;display:grid;place-items:center;color:var(--ink);border-radius:12px}
+.top .logo img{height:60px;width:auto;display:block}
+.sbar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);z-index:45;background:var(--night-2);border-bottom:1px solid var(--line)}
+.sbar .wrap{padding-block:12px}
+
+/* ===== 共用元件 ===== */
+.tag{display:inline-block;font-family:var(--font-brush);font-weight:700;color:var(--ink);background:linear-gradient(#e9d1b0,#dcbf98);
+  padding:.35em 1.3em;transform:rotate(-2deg);letter-spacing:.12em;font-size:1.05rem;line-height:1.4;margin:0;
+  clip-path:polygon(1% 18%,5% 4%,12% 12%,24% 2%,38% 10%,52% 0,66% 9%,80% 2%,93% 10%,99% 24%,97% 46%,100% 66%,95% 84%,88% 98%,74% 90%,60% 100%,46% 91%,32% 100%,18% 92%,6% 99%,2% 80%,0 58%,3% 38%)}
+.dash{border:0;border-top:1.5px dashed var(--line);margin:28px 0}
+.page{padding-block:36px 72px;animation:in .35s ease both}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.page{animation:none}html{scroll-behavior:auto}}
+.cap{display:block;font-variant-numeric:tabular-nums;letter-spacing:.08em;font-size:.95rem;color:var(--text);margin-top:8px;line-height:1.4}
+.cap b{font-weight:500;margin-right:.9em}
+.thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;border:1px solid rgba(243,230,214,.35);box-shadow:0 6px 14px rgba(0,0,0,.35);background:var(--night-2)}
+.thumb{display:block;min-width:0}
+
+/* ===== 首頁 ===== */
+.cover{position:relative;display:flex;justify-content:space-between;align-items:center;max-width:1040px;margin:clamp(20px,5vw,48px) auto 0}
+.cover img{display:block}
+.cover .cl,.cover .cr{width:30%;height:auto}
+.cover .lg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(124px,27%,270px);height:auto}
+.hwrap{max-width:760px;margin-inline:auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:clamp(24px,5vw,48px) 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.scard,.tile{background:linear-gradient(180deg,#fae5d1,#f5d9c2);border:1px solid rgba(190,150,110,.25);border-radius:30px;
+  box-shadow:0 10px 22px rgba(120,80,40,.16),inset 0 1px 0 rgba(255,255,255,.65)}
+.scard{padding:22px 22px 24px}
+.scard h1{font-size:clamp(1.6rem,5vw,2.1rem);font-weight:700;letter-spacing:.06em;margin:0 0 14px;line-height:1.3}
+.sform{display:flex;align-items:center;background:#fbe9d8;border:1.5px solid #c9a982;border-radius:999px;padding:4px 4px 4px 22px;gap:8px}
+.sform input{flex:1;min-width:0;background:none;border:0;outline:0;font:inherit;font-size:1.1rem;letter-spacing:.06em;color:var(--ink);padding:12px 0}
+.sform input::placeholder{color:#5a4535}
+.sform:focus-within{border-color:var(--brown);box-shadow:0 0 0 3px rgba(138,90,43,.2)}
+.sform button{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a8743c,#7a4d22);color:#fbe8d5;display:grid;place-items:center;flex:none;box-shadow:0 4px 10px rgba(80,50,20,.35)}
+.hint{margin:10px 6px 0;font-size:.95rem;color:#8a3b2a;min-height:1.4em}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:26px 8px 22px;min-height:132px;
+  font-size:clamp(1.1rem,3.6vw,1.35rem);font-weight:500;letter-spacing:.08em;position:relative;transition:transform .15s}
+.tile:hover{transform:translateY(-2px)}
+.tile small{position:absolute;top:12px;right:16px;font-size:.72rem;background:var(--paper-2);padding:1px 10px;border-radius:999px;letter-spacing:.06em;font-weight:400}
+.tile svg{stroke:var(--ink)}
+@media (min-width:860px){
+  .tiles{grid-template-columns:repeat(4,1fr)}
+  .hwrap{max-width:900px}
+  .tile{min-height:170px}
+}
+
+/* ===== 作品頁 ===== */
+.work{display:grid;gap:22px;max-width:720px;margin-inline:auto}
+.stage{position:relative;background:var(--night-2);border-radius:30px;padding:clamp(16px,4vw,40px);display:grid;place-items:center;box-shadow:inset 0 0 40px rgba(0,0,0,.45),0 10px 24px rgba(0,0,0,.3)}
+.stage img{max-width:100%;max-height:62vh;width:auto;height:auto;box-shadow:0 8px 22px rgba(0,0,0,.6)}
+.fs{position:absolute;right:16px;bottom:16px;width:44px;height:44px;border-radius:12px;background:rgba(20,16,14,.75);display:grid;place-items:center;color:var(--text)}
+.metar{display:flex;flex-direction:column;align-items:flex-end;font-size:.9rem;letter-spacing:.1em;color:var(--muted);line-height:1.9}
+.titlerow{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.num{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;font-size:2.1rem;padding:.2em 1em;letter-spacing:.02em}
+.work h1{margin:0;font-size:clamp(1.8rem,6vw,2.4rem);letter-spacing:.1em;line-height:1.3;font-weight:500;text-wrap:balance;min-width:0}
+.by{margin:6px 0 0;letter-spacing:.14em;color:var(--text);display:flex;align-items:center;gap:12px}
+.by a.nm{border-bottom:1px solid transparent}.by a.nm:hover{border-color:var(--text)}
+.by .ico{width:32px;height:32px;display:grid;place-items:center}
+.concept{margin:16px 0 0;padding-left:clamp(0px,5vw,40px);letter-spacing:.12em;line-height:2;color:var(--text)}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.more{display:flex;align-items:center;gap:6px;letter-spacing:.12em;font-size:.95rem}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+
+
+/* ===== 探索作品 ===== */
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.sel{position:relative}
+.sel select{appearance:none;-webkit-appearance:none;width:100%;background:#f6e3cf;color:var(--ink);border:0;border-radius:999px;padding:14px 46px 14px 24px;font:inherit;font-weight:700;letter-spacing:.1em;box-shadow:0 5px 12px rgba(0,0,0,.3);cursor:pointer;text-overflow:ellipsis}
+.sel svg{position:absolute;right:18px;top:50%;transform:translateY(-50%);pointer-events:none;stroke:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 16px}
+.grid .thumb img{aspect-ratio:13/10}
+.grid .cap{font-size:1.05rem;padding-left:4px}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0;letter-spacing:.1em}
+@media (min-width:720px){.grid{grid-template-columns:repeat(3,1fr);gap:24px}}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+
+/* ===== 創作者 ===== */
+.ah{display:flex;flex-direction:column;align-items:flex-end;gap:0}
+.ah .tag{align-self:flex-start;font-size:clamp(1.5rem,5vw,2rem);padding:.4em 1.6em;margin-bottom:8px}
+.ah p{margin:0;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.alist{display:grid;gap:14px;margin-top:20px}
+.page .ah,.page .alist{width:100%;max-width:720px;margin-inline:auto}
+.ac{border:1.5px solid rgba(243,230,214,.55);border-radius:26px;background:rgba(0,0,0,.12);scroll-margin-top:130px;transition:border-color .2s}
+.ac.hl{border-color:#f0b36b}
+.ac-h{display:flex;align-items:center;gap:14px;padding:12px 18px 12px 24px;min-height:68px;width:100%;text-align:left}
+.ac-n{font-size:1.55rem;font-weight:500;letter-spacing:.14em;flex:0 1 auto;min-width:0}
+.ac-ln{display:flex;gap:12px;align-items:center}
+.ac-ln a{display:grid;place-items:center;width:34px;height:34px}
+.ac-c{margin-left:auto;display:flex;align-items:center;gap:10px;letter-spacing:.12em;white-space:nowrap}
+.ac-c svg{transition:transform .2s}
+.ac.open .ac-c svg{transform:rotate(90deg)}
+.ac-b{display:none;padding:2px 16px 20px}
+.ac.open .ac-b{display:block}
+.ac-b .row3{margin-top:6px}
+.ac-b .thumb img{aspect-ratio:3/2;border-radius:16px}
+.ac-b .cap{font-size:.82rem;letter-spacing:.04em}
+.ac-b .cap b{margin-right:.5em}
+.ac-head{display:flex;align-items:center;gap:6px;flex:1;min-width:0}
+
+/* ===== 關於 / 紀錄 ===== */
+.about{display:grid;gap:8px;max-width:760px;margin-inline:auto}
+.about p{font-size:clamp(1.25rem,4.4vw,1.6rem);letter-spacing:.2em;line-height:2.1;margin:0 0 4px;font-weight:400;text-wrap:pretty}
+.about img{width:100%;border-radius:30px;border:1px solid rgba(243,230,214,.35);box-shadow:0 10px 24px rgba(0,0,0,.35);margin-top:10px}
+.tabs{display:flex;position:relative;border-bottom:1.5px dashed var(--line);margin-bottom:22px}
+.tabs button{flex:1;padding:12px 0 14px;font-size:clamp(1.25rem,4.4vw,1.6rem);letter-spacing:.12em;position:relative}
+.tabs button span{display:inline-block;padding:.15em 1.2em;border-radius:999px;transition:background .2s,color .2s}
+.tabs button[aria-selected="true"] span{background:#e3d3c0;color:var(--ink)}
+.tabs button[aria-selected="true"]::after{content:"";position:absolute;left:18%;right:18%;bottom:-2px;height:4px;border-radius:4px;background:#f3e6d6}
+.rec{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rec button{display:block;border-radius:28px;overflow:hidden;border:1px solid rgba(243,230,214,.35);box-shadow:0 8px 20px rgba(0,0,0,.35);background:var(--night-2);padding:0;text-align:left}
+.rec img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.rec button:hover img{transform:scale(1.03)}
+.rec button:first-child{grid-column:1/-1}
+.rec button:first-child img{aspect-ratio:3/2}
+.rec button:not(:first-child) img{aspect-ratio:1/1}
+.rec .rc{display:block;font-size:.85rem;color:var(--muted);padding:8px 14px 10px;letter-spacing:.08em}
+@media (min-width:860px){.rec{grid-template-columns:repeat(3,1fr)}.rec button:first-child{grid-column:span 2;grid-row:span 2}.rec button:first-child img{aspect-ratio:auto;height:100%}.rec button:not(:first-child) img{aspect-ratio:4/3}}
+.soft{text-align:center;padding:56px 12px;color:var(--muted);letter-spacing:.12em;border:1.5px dashed var(--line);border-radius:26px}
+
+/* ===== 找不到 ===== */
+.nf{text-align:center;display:grid;gap:14px;justify-items:center;padding-top:24px}
+.nf .q{font-family:var(--font-brush);font-size:7rem;line-height:1;color:#b9cde6;opacity:.85}
+.nf h1{margin:0;font-size:clamp(1.5rem,5vw,2rem);letter-spacing:.1em;font-weight:500}
+.nf p{margin:0;color:var(--muted);letter-spacing:.08em;max-width:30em}
+.nf .sform{background:#f6e3cf;width:100%;max-width:440px;margin-top:10px}
+.nf .hint{color:#f0b3a3}
+.btn{display:inline-block;background:#e3d3c0;color:var(--ink);padding:12px 28px;border-radius:999px;font-weight:700;letter-spacing:.12em;box-shadow:0 5px 12px rgba(0,0,0,.3)}
+
+/* ===== 側選單 / 放大檢視 ===== */
+.scrim{position:fixed;inset:0;background:rgba(10,7,5,.6);z-index:70;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(320px,84vw);z-index:80;background:linear-gradient(#f5e0cc,#eed2b8);color:var(--ink);
+  padding:calc(env(safe-area-inset-top,0px) + 20px) 24px 24px calc(max(24px,env(safe-area-inset-left,0px)));transform:translateX(-102%);visibility:hidden;transition:transform .25s,visibility .25s}
+.drawer.on{transform:none;visibility:visible;box-shadow:8px 0 30px rgba(0,0,0,.4)}
+.drawer img{height:54px;width:auto;margin:6px 0 18px;display:block}
+.drawer a{display:block;padding:14px 4px;font-size:1.2rem;letter-spacing:.14em;border-bottom:1.5px dashed rgba(43,31,23,.25)}
+.drawer a[aria-current="page"]{font-weight:700}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(8,6,5,.92);display:none;place-items:center;padding:20px}
+.lb.on{display:grid}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+.lb button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#fff}
+.foot{text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.1em;padding:0 16px 40px}
+</style>
+
+<div id="top"></div>
+<div id="sbarHost"></div>
+<main id="app"></main>
+<div class="scrim" id="scrim"></div>
+<nav class="drawer" id="drawer" aria-label="主選單" aria-hidden="true"></nav>
+<div class="lb" id="lb" role="dialog" aria-label="作品放大檢視"><button type="button" data-act="lbclose" aria-label="關閉"></button><img alt=""></div>
+
+<script>
+/* ===== 範例資料:欄位對應 Google 試算表的四個分頁(works / artists / records / site) =====
+   之後只要把這個物件換成「打包時從試算表抓下來的 JSON」即可。圖片欄位只放檔名。 */
+var SAMPLE = {
+  site: {
+    title: "我之所以是我", subtitle: "藝術聯展",
+    about: "「我之所以是我」是一場關於自我、經驗與創作的聯合展覽。\n21 位創作者以各自的視角與媒材,分享那些形塑自我的片段、感受與思考,邀請觀眾一同探索每一個獨特的「我」。",
+    about_image: "about.jpg", total_artists: 21
+  },
+  artists: [
+    { artist_id: "a01", name: "林育真", instagram: "https://instagram.com/", website: "https://example.com" },
+    { artist_id: "a02", name: "陳思羽", instagram: "https://instagram.com/", website: "" },
+    { artist_id: "a03", name: "張偉棠", instagram: "https://instagram.com/", website: "" },
+    { artist_id: "a04", name: "黃子晴", instagram: "https://instagram.com/", website: "https://example.com" }
+  ],
+  works: [
+    { id: "001", title: "海洋呼喚", artist_id: "a02", medium: "油彩、畫布", medium_type: "繪畫", size: "約 60 × 46 cm", image: "w001.jpg",
+      concept: "小時候第一次看見海,覺得整片世界都在呼吸。\n我把那個瞬間畫下來,提醒自己仍然記得被震懾的感覺。" },
+    { id: "002", title: "小小的避風港", artist_id: "a03", medium: "木雕、燈泡", medium_type: "雕塑", size: "約 18 × 15 × 20 cm", image: "w002.jpg",
+      concept: "每個人心裡都有一間亮著燈的小屋。\n不大,卻足夠在疲憊的夜晚,讓人安心地停下來。" },
+    { id: "003", title: "向陽日常", artist_id: "a04", medium: "紙漿、燈具", medium_type: "裝置", size: "約 40 × 30 × 120 cm", image: "w003.jpg",
+      concept: "把雲留在家裡,讓它成為每天都會亮起的一盞燈。\n平凡的日子,也值得有柔軟的光。" },
+    { id: "004", title: "瞌睡午後", artist_id: "a03", medium: "陶土、釉料", medium_type: "雕塑", size: "約 22 × 16 × 12 cm", image: "w004.jpg",
+      concept: "午後的貓與書,是我對『放鬆』最具體的想像。\n不需要完成什麼,只要待在那裡。" },
+    { id: "005", title: "朝向光的方向", artist_id: "a02", medium: "油彩、畫布", medium_type: "繪畫", size: "約 53 × 41 cm", image: "w005.jpg",
+      concept: "向日葵總是轉向光。\n我也想練習,在低潮的時候,轉向讓自己溫暖的那一邊。" },
+    { id: "006", title: "靜夜滿月", artist_id: "a04", medium: "壓克力、畫布", medium_type: "繪畫", size: "約 53 × 41 cm", image: "w006.jpg",
+      concept: "失眠的夜裡抬頭,月亮總是安靜地在那裡。\n它沒有回答任何問題,卻讓人覺得被陪著。" },
+    { id: "011", title: "海的呼吸", artist_id: "a01", medium: "油彩、畫布", medium_type: "繪畫", size: "約 60 × 45 cm", image: "w011.jpg",
+      concept: "浪起浪落之間,有一種規律的節奏。\n我試著用筆觸記錄那種彷彿呼吸的起伏。" },
+    { id: "012", title: "雲之間的黃昏", artist_id: "a01", medium: "油彩、畫布", medium_type: "繪畫", size: "約 72 × 53 cm", image: "w012.jpg",
+      concept: "我喜歡觀察天空在不同時刻的變化。\n這幅作品捕捉的是黃昏時,雲層與光線交錯的瞬間,\n那是一種短暫、柔軟,卻讓人感到安定的風景。" },
+    { id: "013", title: "野花的季節", artist_id: "a01", medium: "油彩、畫布", medium_type: "繪畫", size: "約 60 × 45 cm", image: "w013.jpg",
+      concept: "路邊的野花沒有人特別照顧,卻自己長成了一片風景。\n我想畫下這種不被注意的堅韌。" },
+    { id: "014", title: "月下的山", artist_id: "a01", medium: "油彩、畫布", medium_type: "繪畫", size: "約 60 × 45 cm", image: "w014.jpg",
+      concept: "夜裡的山沉默而厚實。\n月光落下來時,連陰影都變得溫柔。" }
+  ],
+  records: [
+    { type: "展場", image: "rec1.jpg", caption: "展場全景", order: 1 },
+    { type: "展場", image: "rec2.jpg", caption: "走廊", order: 2 },
+    { type: "展場", image: "rec3.jpg", caption: "休息角落", order: 3 }
+  ]
+};
+
+var DB = SAMPLE;
+/* ===== 小工具 ===== */
+var A = "assets/";
+function h(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+/* 圖片欄位可填:檔名(放在 assets/)、Google 雲端硬碟分享連結、雲端硬碟檔案 ID、或任何 https 圖片網址 */
+function U(v,w){v=String(v||"").trim();if(!v)return "";
+  var m=v.match(/drive\.google\.com\/file\/d\/([\w-]+)/)||v.match(/drive\.google\.com\/(?:open|uc|thumbnail)\?(?:[^#]*&)?id=([\w-]+)/)||(/^[\w-]{25,}$/.test(v)&&[0,v]);
+  if(m)return "https://drive.google.com/thumbnail?id="+m[1]+"&sz=w"+(w||1200);
+  if(/^https?:\/\//.test(v))return v;return A+v}
+function nl(s){return h(s).replace(/\n/g,"<br>")}
+function artistOf(w){return DB.artists.filter(function(a){return a.artist_id===w.artist_id})[0]||{name:"",artist_id:""}}
+function worksOf(aid){return DB.works.filter(function(w){return w.artist_id===aid})}
+function byId(id){return DB.works.filter(function(w){return w.id===id})[0]}
+function sv(p,w,sw){return '<svg width="'+(w||24)+'" height="'+(w||24)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||2)+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'}
+var I = {
+  menu: sv('<path d="M3 6h18M3 12h18M3 18h18"/>',32,2.4),
+  search: sv('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/>',30,2.2),
+  searchS: sv('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/>',26,2),
+  expand: sv('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',24,2.4),
+  link: sv('<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',24,2),
+  ig: sv('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/>',28,2),
+  down: sv('<path d="m5 9 7 7 7-7"/>',22,2.4),
+  right: sv('<path d="m9 5 7 7-7 7"/>',22,2.4),
+  img: sv('<rect x="3" y="4" width="18" height="14" rx="2.5"/><circle cx="8" cy="9" r="1.6"/><path d="m3.5 16 5-4.5 4 3.5 3-2.5 5 4.5M9 18v3l3-3"/>',46,1.9),
+  people: sv('<circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="4.8" cy="10" r="2.2"/><circle cx="19.2" cy="10" r="2.2"/><path d="M2 17.5c0-2 1.2-3.3 3-3.6M22 17.5c0-2-1.2-3.3-3-3.6"/>',46,1.9),
+  info: sv('<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".7" fill="currentColor"/>',46,1.9),
+  close: sv('<path d="M5 5l14 14M19 5 5 19"/>',26,2.4)
+};
+
+/* ===== 頁首(撕紙) ===== */
+function torn(n,amp,seed){var s=seed,r=function(){s=(s*9301+49297)%233280;return s/233280},p=["0 0","100% 0"];
+  for(var i=n;i>=0;i--)p.push((i/n*100).toFixed(2)+"% calc(100% - "+(r()*amp).toFixed(1)+"px)");return "polygon("+p.join(",")+")"}
+function buildTop(){
+  document.getElementById("top").innerHTML=
+   '<header class="top"><div class="top-bg"></div><div class="top-in">'+
+   '<button class="ib" data-act="menu" aria-label="開啟選單" aria-expanded="false">'+I.menu+'</button>'+
+   '<a class="logo" href="#home" aria-label="回首頁"><img src="'+A+'logo.png" alt="'+h(DB.site.title+" "+DB.site.subtitle)+'"></a>'+
+   '<button class="ib" data-act="sbar" aria-label="搜尋作品" aria-expanded="false">'+I.search+'</button></div></header>';
+  document.querySelector(".top-bg").style.clipPath=torn(60,13,7);
+  document.getElementById("sbarHost").innerHTML=
+   '<div class="sbar" id="sbar" hidden><div class="wrap"><form class="sform" data-search>'+
+   '<input id="q-top" inputmode="numeric" autocomplete="off" placeholder="輸入作品編號(例:012)" aria-label="作品編號">'+
+   '<button type="submit" aria-label="搜尋">'+I.searchS+'</button></form><div class="hint" role="status"></div></div></div>';
+  var nav=[["home","首頁"],["works","探索作品"],["artists","創作者一覽"],["about","關於展覽"],["records","展覽紀錄"]];
+  document.getElementById("drawer").innerHTML='<img src="'+A+'logo.png" alt="">'+nav.map(function(n){return '<a href="#'+n[0]+'" data-nav="'+n[0]+'">'+n[1]+'</a>'}).join("");
+}
+
+/* ===== 各頁 ===== */
+function viewHome(){
+  var rec = DB.records.length>0;
+  return '<div class="cover"><img class="cl" src="'+A+'cover-left.png" alt=""><img class="lg" src="'+A+'logo-cover.png" alt="'+h(DB.site.title+" "+DB.site.subtitle)+'"><img class="cr" src="'+A+'cover-right.png" alt=""></div>'+
+  '<div class="hwrap"><section class="scard"><h1>搜尋作品</h1><form class="sform" data-search>'+
+  '<input id="q-home" inputmode="numeric" autocomplete="off" placeholder="輸入作品編號(例:012)" aria-label="作品編號">'+
+  '<button type="submit" aria-label="搜尋">'+I.searchS+'</button></form><div class="hint" role="status"></div></section>'+
+  '<div class="tiles">'+
+  '<a class="tile" href="#works">'+I.img+'探索作品</a>'+
+  '<a class="tile" href="#artists">'+I.people+'創作者一覽</a>'+
+  '<a class="tile" href="#about">'+I.info+'關於展覽</a>'+
+  '<a class="tile" href="#records">'+I.img+'展覽紀錄'+(rec?'':'<small>展後開放</small>')+'</a></div></div>';
+}
+function thumbHTML(w,compact){
+  return '<a class="thumb" href="#work-'+w.id+'"><img src="'+h(U(w.image,640))+'" alt="'+h(w.title)+'" loading="lazy"><span class="cap"><b>'+h(w.id)+'</b>'+h(w.title)+'</span></a>';
+}
+function viewWork(w){
+  var a=artistOf(w), others=worksOf(w.artist_id).filter(function(x){return x.id!==w.id});
+  var src=h(U(w.image,1600));
+  return '<div class="wrap page"><article class="work">'+
+   '<div class="stage"><img src="'+src+'" alt="'+h(w.title)+'"><button class="fs" type="button" data-act="zoom" data-src="'+src+'" aria-label="全螢幕檢視">'+I.expand+'</button></div>'+
+   '<div class="info"><div class="metar"><span>媒材｜'+h(w.medium)+'</span><span>尺寸｜'+h(w.size)+'</span></div>'+
+   '<div class="titlerow"><span class="tag num">'+h(w.id)+'</span><h1>'+h(w.title)+'</h1></div>'+
+   '<p class="by">創作者｜<a class="nm" href="#artist-'+h(a.artist_id)+'">'+h(a.name)+'</a><a class="ico" href="#artist-'+h(a.artist_id)+'" aria-label="前往 '+h(a.name)+' 的創作者資料">'+I.link+'</a></p>'+
+   '<hr class="dash"><h2 class="tag">創作理念</h2><p class="concept">'+nl(w.concept)+'</p></div>'+
+   (others.length?'<div class="more-wrap"><hr class="dash"><div class="sec-head"><h2 class="tag">同作者其他作品</h2><a class="more" href="#artist-'+h(a.artist_id)+'">查看更多'+I.right+'</a></div>'+
+   '<div class="row3">'+others.slice(0,3).map(thumbHTML).join("")+'</div></div>':'')+
+   '</article></div>';
+}
+var filt={artist:"",type:""};
+function gridHTML(){
+  var list=DB.works.filter(function(w){return (!filt.artist||w.artist_id===filt.artist)&&(!filt.type||w.medium_type===filt.type)});
+  list.sort(function(a,b){return a.id<b.id?-1:1});
+  return list.length?list.map(thumbHTML).join(""):'<p class="empty">沒有符合條件的作品</p>';
+}
+function viewWorks(){
+  var types=[];DB.works.forEach(function(w){if(w.medium_type&&types.indexOf(w.medium_type)<0)types.push(w.medium_type)});
+  return '<div class="wrap page"><div class="filters">'+
+   '<label class="sel"><select id="f-artist" aria-label="依創作者篩選"><option value="">所有創作者</option>'+DB.artists.map(function(a){return '<option value="'+a.artist_id+'"'+(filt.artist===a.artist_id?' selected':'')+'>'+h(a.name)+'</option>'}).join("")+'</select>'+I.down+'</label>'+
+   '<label class="sel"><select id="f-type" aria-label="依媒材篩選"><option value="">所有媒材</option>'+types.map(function(t){return '<option value="'+h(t)+'"'+(filt.type===t?' selected':'')+'>'+h(t)+'</option>'}).join("")+'</select>'+I.down+'</label></div>'+
+   '<div class="grid" id="grid">'+gridHTML()+'</div></div>';
+}
+var openA={};
+function viewArtists(focus){
+  var n=DB.site.total_artists||DB.artists.length;
+  return '<div class="wrap page"><div class="ah"><h1 class="tag">創作者一覽</h1><p>共 '+n+' 位創作者</p></div><div class="alist">'+
+  DB.artists.map(function(a){
+    var ws=worksOf(a.artist_id).sort(function(x,y){return x.id<y.id?-1:1}), open=!!openA[a.artist_id];
+    return '<section class="ac'+(open?' open':'')+(focus===a.artist_id?' hl':'')+'" id="artist-'+a.artist_id+'"><div class="ac-h">'+
+      '<div class="ac-head"><span class="ac-n">'+h(a.name)+'</span><span class="ac-ln">'+
+      (a.instagram?'<a href="'+h(a.instagram)+'" target="_blank" rel="noopener" aria-label="'+h(a.name)+' 的 Instagram">'+I.ig+'</a>':'')+
+      (a.website?'<a href="'+h(a.website)+'" target="_blank" rel="noopener" aria-label="'+h(a.name)+' 的網站">'+I.link+'</a>':'')+'</span></div>'+
+      '<button class="ac-c" type="button" data-act="acc" data-id="'+a.artist_id+'" aria-expanded="'+open+'" aria-label="展開 '+h(a.name)+' 的作品">'+ws.length+' 件作品'+(open?I.right:I.right)+'</button></div>'+
+      '<div class="ac-b"><div class="row3">'+ws.map(thumbHTML).join("")+'</div></div></section>';
+  }).join("")+'</div></div>';
+}
+function viewAbout(){
+  return '<div class="wrap page"><div class="about"><p>'+nl(DB.site.about)+'</p><hr class="dash">'+(DB.site.about_image?'<img src="'+h(U(DB.site.about_image,1200))+'" alt="展場一隅">':'')+'</div></div>';
+}
+var recTab="展場";
+function recHTML(){
+  var list=DB.records.filter(function(r){return r.type===recTab}).sort(function(a,b){return a.order-b.order});
+  if(!list.length)return '<div class="soft">'+(recTab==="活動"?'活動紀錄將於展覽期間陸續更新':'展覽結束後開放')+'</div>';
+  return '<div class="rec">'+list.map(function(r){return '<button type="button" data-act="zoom" data-src="'+h(U(r.image,1600))+'"><img src="'+h(U(r.image,800))+'" alt="'+h(r.caption)+'" loading="lazy">'+(r.caption?'<span class="rc">'+h(r.caption)+'</span>':'')+'</button>'}).join("")+'</div>';
+}
+function viewRecords(){
+  return '<div class="wrap page"><div class="tabs" role="tablist">'+["展場","活動"].map(function(t){return '<button role="tab" type="button" data-act="tab" data-t="'+t+'" aria-selected="'+(recTab===t)+'"><span>'+t+'紀錄</span></button>'}).join("")+'</div><div id="recBody">'+recHTML()+'</div></div>';
+}
+function viewNF(id){
+  return '<div class="wrap page"><div class="nf"><div class="q" aria-hidden="true">?</div><h1>找不到編號 '+h(id)+' 的作品</h1>'+
+  '<p>請對照作品旁標示的數字再輸入一次,或到探索作品逐一瀏覽。</p>'+
+  '<form class="sform" data-search><input id="q-nf" inputmode="numeric" autocomplete="off" placeholder="輸入作品編號(例:012)" aria-label="作品編號"><button type="submit" aria-label="搜尋">'+I.searchS+'</button></form><div class="hint" role="status"></div>'+
+  '<a class="btn" href="#works">探索作品</a></div></div>';
+}
+
+/* ===== 路由 ===== */
+var app=document.getElementById("app");
+function route(){
+  var r=(location.hash||"#home").slice(1), m, html, key="home";
+  closeMenu();document.getElementById("sbar").hidden=true;
+  var focus="";
+  if(r==="home"||r===""){html='';key="home"}
+  else if((m=r.match(/^work-(\d+)$/))){var w=byId(m[1]);html=w?viewWork(w):viewNF(m[1]);key="work"}
+  else if(r==="works"){html=viewWorks();key="works"}
+  else if(r==="artists"){html=viewArtists();key="artists"}
+  else if((m=r.match(/^artist-(\w+)$/))){focus=m[1];openA[focus]=true;html=viewArtists(focus);key="artists"}
+  else if(r==="about"){html=viewAbout();key="about"}
+  else if(r==="records"){html=viewRecords();key="records"}
+  else if((m=r.match(/^notfound-(\d*)$/))){html=viewNF(m[1]);key="nf"}
+  else {r="home";html='';key="home"}
+  document.body.setAttribute("data-route",key==="home"?"home":"page");
+  document.getElementById("top").style.display=key==="home"?"none":"";
+  app.innerHTML = key==="home"?viewHome():html;
+  document.querySelectorAll("#drawer a").forEach(function(a){var t=a.getAttribute("data-nav");a.setAttribute("aria-current",(t===r||(t==="artists"&&key==="artists")||(t==="works"&&key==="work")||(t==="home"&&key==="home"))?"page":"false")});
+  if(focus){var el=document.getElementById("artist-"+focus);if(el)setTimeout(function(){el.scrollIntoView({block:"start"})},30)}else window.scrollTo(0,0);
+  var q=document.querySelector("#app input[inputmode]");if(q&&key==="nf")q.focus({preventScroll:true});
+}
+window.addEventListener("hashchange",route);
+
+/* ===== 搜尋:全形轉半形、只留數字、補零到 3 碼 ===== */
+function goSearch(raw,form){
+  var d=String(raw).replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-65248)}).replace(/\D/g,"");
+  var hint=form.parentNode.querySelector(".hint");
+  if(!d){if(hint)hint.textContent="請輸入作品旁的數字編號,例如 012";return}
+  var id=d.length<3?("000"+d).slice(-3):d;
+  var target=byId(id)?("work-"+id):("notfound-"+id);
+  if(location.hash==="#"+target)route();else location.hash=target;
+}
+document.addEventListener("submit",function(e){var f=e.target.closest("form[data-search]");if(!f)return;e.preventDefault();goSearch(f.querySelector("input").value,f)});
+
+/* ===== 互動 ===== */
+var drawer=document.getElementById("drawer"),scrim=document.getElementById("scrim"),lb=document.getElementById("lb");
+function closeMenu(){drawer.classList.remove("on");scrim.classList.remove("on");drawer.setAttribute("aria-hidden","true");var b=document.querySelector('[data-act="menu"]');if(b)b.setAttribute("aria-expanded","false")}
+function openLB(src){lb.querySelector("img").src=src;lb.classList.add("on")}
+function closeLB(){lb.classList.remove("on")}
+document.addEventListener("click",function(e){
+  if(e.target===scrim){closeMenu();return}
+  if(e.target===lb||e.target.tagName==="IMG"&&lb.contains(e.target)){closeLB();return}
+  var b=e.target.closest("[data-act]");if(!b)return;var act=b.getAttribute("data-act");
+  if(act==="menu"){drawer.classList.add("on");scrim.classList.add("on");drawer.setAttribute("aria-hidden","false");b.setAttribute("aria-expanded","true")}
+  else if(act==="sbar"){var s=document.getElementById("sbar");s.hidden=!s.hidden;b.setAttribute("aria-expanded",String(!s.hidden));if(!s.hidden)document.getElementById("q-top").focus()}
+  else if(act==="zoom")openLB(b.getAttribute("data-src"));
+  else if(act==="lbclose")closeLB();
+  else if(act==="acc"){var id=b.getAttribute("data-id");openA[id]=!openA[id];var sec=document.getElementById("artist-"+id);sec.classList.toggle("open",!!openA[id]);b.setAttribute("aria-expanded",String(!!openA[id]))}
+  else if(act==="tab"){recTab=b.getAttribute("data-t");document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",String(x===b))});document.getElementById("recBody").innerHTML=recHTML()}
+});
+document.addEventListener("change",function(e){
+  if(e.target.id==="f-artist"||e.target.id==="f-type"){filt.artist=document.getElementById("f-artist").value;filt.type=document.getElementById("f-type").value;document.getElementById("grid").innerHTML=gridHTML()}
+});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeLB();closeMenu()}});
+lb.querySelector("button").innerHTML=I.close;
+
+
+/* ===== 資料來源:Google 試算表(已設為「知道連結的人可檢視」)=====
+   讀取順序:瀏覽器快取 → 試算表即時資料;兩者都失敗時使用上面的範例資料。 */
+var CFG={sheetId:"1I0U6nRu2aj06ef7hcYDE_h46YoNjAhaqVqjAm_6lVZQ",cacheKey:"expo-data-v1"};
+function parseCSV(t){var rows=[],r=[],f="",q=false,i=0,c;t=t.replace(/^﻿/,"");
+  for(;i<t.length;i++){c=t.charAt(i);
+    if(q){if(c==='"'){if(t.charAt(i+1)==='"'){f+='"';i++}else q=false}else f+=c}
+    else if(c==='"')q=true;
+    else if(c===","){r.push(f);f=""}
+    else if(c==="\n"||c==="\r"){if(c==="\r"&&t.charAt(i+1)==="\n")i++;r.push(f);f="";rows.push(r);r=[]}
+    else f+=c}
+  if(f!==""||r.length){r.push(f);rows.push(r)}return rows}
+function toObjs(rows){if(!rows.length)return [];var hd=rows[0].map(function(x){return x.trim().toLowerCase()});
+  return rows.slice(1).filter(function(r){return r.some(function(x){return x.trim()})}).map(function(r){var o={};hd.forEach(function(k,i){o[k]=(r[i]||"").trim()});return o})}
+function fetchTab(n){return fetch("https://docs.google.com/spreadsheets/d/"+CFG.sheetId+"/gviz/tq?tqx=out:csv&sheet="+encodeURIComponent(n))
+  .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.text()}).then(function(t){return toObjs(parseCSV(t))})}
+function hasCols(rows,keys){return rows.length>0&&keys.every(function(k){return k in rows[0]})}
+function pad3(s){s=String(s||"").trim();return /^\d+$/.test(s)&&s.length<3?("000"+s).slice(-3):s}
+function buildDB(W,AR,RE,SI){
+  if(!hasCols(W,["id","title","artist_id","image"])||!hasCols(AR,["artist_id","name"]))throw new Error("欄位不符");
+  var site={};for(var k in SAMPLE.site)site[k]=SAMPLE.site[k];
+  SI.forEach(function(r){if(r.key&&r.value)site[r.key]=r.value});
+  site.total_artists=parseInt(site.total_artists,10)||AR.length;
+  return {site:site,
+    artists:AR.filter(function(a){return a.artist_id&&a.name}),
+    works:W.filter(function(w){return w.id&&w.title}).map(function(w){w.id=pad3(w.id);w.medium_type=w.medium_type||w.medium;return w}),
+    records:RE.filter(function(r){return r.image}).map(function(r,i){return {type:r.type==="活動"?"活動":"展場",image:r.image,caption:r.caption||"",order:parseFloat(r.order)||i+1}})};
+}
+function applyDB(next,fromCache){
+  if(JSON.stringify(next)===JSON.stringify(DB))return;
+  DB=next;buildTop();route();
+}
+function loadData(){
+  try{var c=JSON.parse(localStorage.getItem(CFG.cacheKey)||"null");if(c&&c.data&&c.data.works){DB=c.data}}catch(e){}
+  return Promise.all([fetchTab("works"),fetchTab("artists"),fetchTab("records").catch(function(){return []}),fetchTab("site").catch(function(){return []})])
+   .then(function(a){var next=buildDB(a[0],a[1],a[2],a[3]);try{localStorage.setItem(CFG.cacheKey,JSON.stringify({t:Date.now(),data:next}))}catch(e){}applyDB(next)})
+   .catch(function(e){console.info("使用範例/快取資料:",e&&e.message)});
+}
+
+buildTop();
+route();
+loadData();
+</script>
+
+</body></html>
