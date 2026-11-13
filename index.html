@@ -155,7 +155,12 @@ svg{display:block}
 
 /* ===== 關於 / 紀錄 ===== */
 .about{display:grid;gap:8px;max-width:760px;margin-inline:auto}
-.about p{font-size:clamp(1.25rem,4.4vw,1.6rem);letter-spacing:.2em;line-height:2.1;margin:0 0 4px;font-weight:400;text-wrap:pretty}
+.atext{display:grid;gap:6px}
+.atext p{margin:0;text-wrap:pretty}
+.a-h1{font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;letter-spacing:.14em;line-height:1.6}
+.a-h2{font-size:clamp(1.25rem,4.4vw,1.5rem);font-weight:500;letter-spacing:.14em;line-height:1.8}
+.a-p{font-size:1rem;font-weight:400;letter-spacing:.14em;line-height:2.1;color:var(--muted)}
+.a-gap{height:14px}
 .about img{width:100%;border-radius:30px;border:1px solid rgba(243,230,214,.35);box-shadow:0 10px 24px rgba(0,0,0,.35);margin-top:10px}
 .tabs{display:flex;position:relative;border-bottom:1.5px dashed var(--line);margin-bottom:22px}
 .tabs button{flex:1;padding:12px 0 14px;font-size:clamp(1.25rem,4.4vw,1.6rem);letter-spacing:.12em;position:relative}
@@ -352,8 +357,18 @@ function viewArtists(focus){
       '<div class="ac-b"><div class="row3">'+ws.map(thumbHTML).join("")+'</div></div></section>';
   }).join("")+'</div></div>';
 }
+/* 關於展覽文字:每一行是一段。行首「# 」= 大標、「## 」= 小標、空白行 = 加大間距;
+   沒有任何標記時,第一行自動當大標,其餘為內文。 */
+function aboutHTML(t){
+  var lines=String(t||"").split(/\n/),marked=lines.some(function(l){return /^#{1,2}\s/.test(l)}),first=true,out="";
+  lines.forEach(function(l){
+    var s=l.trim();if(!s){out+='<div class="a-gap"></div>';return}
+    var m=s.match(/^(#{1,2})\s+(.*)$/),cls="a-p",txt=s;
+    if(m){cls=m[1].length===1?"a-h1":"a-h2";txt=m[2]}else if(!marked&&first){cls="a-h1"}
+    first=false;out+='<p class="'+cls+'">'+h(txt)+'</p>'});
+  return out}
 function viewAbout(){
-  return '<div class="wrap page"><div class="about"><p>'+nl(DB.site.about)+'</p><hr class="dash">'+(DB.site.about_image?'<img src="'+h(U(DB.site.about_image,1200))+'" alt="展場一隅">':'')+'</div></div>';
+  return '<div class="wrap page"><div class="about"><div class="atext">'+aboutHTML(DB.site.about)+'</div><hr class="dash">'+(DB.site.about_image?'<img src="'+h(U(DB.site.about_image,1200))+'" alt="展場一隅">':'')+'</div></div>';
 }
 var recTab="展場";
 function recHTML(){
