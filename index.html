@@ -196,11 +196,108 @@ svg{display:block}
 .drawer img{height:54px;width:auto;margin:6px 0 18px;display:block}
 .drawer a{display:block;padding:14px 4px;font-size:1.2rem;letter-spacing:.14em;border-bottom:1.5px dashed rgba(43,31,23,.25)}
 .drawer a[aria-current="page"]{font-weight:700}
-.lb{position:fixed;inset:0;z-index:90;background:rgba(8,6,5,.92);display:none;place-items:center;padding:20px}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(8,6,5,.92);display:none;place-items:center;padding:20px;overflow:hidden;touch-action:none;overscroll-behavior:contain;user-select:none;-webkit-user-select:none}
 .lb.on{display:grid}
-.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
-.lb button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#fff}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;touch-action:none;-webkit-user-drag:none;will-change:transform;cursor:zoom-in}
+.lb img.smooth{transition:transform .2s ease}
+.lb.zoomed img{cursor:grab}
+.lb-ctl{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(255,255,255,.14)}
+.lb-ctl button{position:static;width:auto;min-width:46px;height:46px;padding:0 16px;border-radius:999px;background:none;color:#fff;font-size:1.3rem;line-height:1;letter-spacing:.06em}
+.lb [data-act='lbclose']{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#fff}
 .foot{text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.1em;padding:0 16px 40px}
+
+/* ===== 彩蛋 / 展覽之後 ===== */
+.tile.wide{grid-column:1/-1;flex-direction:row;min-height:84px;gap:16px;padding:16px}
+.ticks{display:block;color:#e8c9a8;flex:none}
+.pill{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(#fbe9d6,#f2d9bf);color:var(--ink);font-size:clamp(1.15rem,4.6vw,1.6rem);font-weight:700;letter-spacing:.16em;padding:16px 36px;border-radius:28px;box-shadow:0 8px 18px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.7)}
+.pill.blue{background:linear-gradient(#e6edf5,#d3dfec)}
+.af{max-width:640px;margin-inline:auto;display:grid;justify-items:center;gap:16px;text-align:center;padding-top:40px}
+.af-title{display:flex;align-items:center;gap:14px;justify-content:center}
+.af-title h1{margin:0;font-family:var(--font-brush);font-weight:400;font-size:clamp(3rem,14vw,4.8rem);letter-spacing:.06em;line-height:1.2;color:#f3e6d6}
+.af-text{margin:8px 0 14px;font-size:clamp(1.1rem,4.4vw,1.4rem);letter-spacing:.22em;line-height:2;color:#f3e6d6}
+.puzzle{position:relative;width:100%;max-width:560px;margin-top:6px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+.puzzle svg{display:block;width:100%;height:auto}
+.pz{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:clamp(1rem,4.2vw,1.35rem);letter-spacing:.08em;color:var(--ink);padding:0 3%;white-space:nowrap}
+.pz-l{left:0;width:49%}
+.pz-r{right:0;width:49%;padding-left:8%}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(10,7,5,.6);display:grid;place-items:center;padding:24px}
+.mb{background:linear-gradient(#fbe9d6,#f2d9bf);color:var(--ink);border-radius:26px;padding:28px 26px 22px;max-width:340px;width:100%;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.5);display:grid;gap:12px}
+.mb h2{margin:0;font-size:1.5rem;letter-spacing:.12em}
+.mb p{margin:0;letter-spacing:.08em;line-height:1.8}
+.mlinks{display:grid;gap:8px;margin-top:4px}
+.mlinks a{display:block;background:#fff6ea;border:1.5px solid rgba(43,31,23,.35);padding:10px;border-radius:999px;font-weight:700;letter-spacing:.1em}
+.mx{justify-self:center;margin-top:4px;padding:8px 24px;border-radius:999px;background:var(--ink);color:#fbe8d5;font-weight:500;letter-spacing:.1em}
+/* ===== 彩蛋影片 / 投稿 / 藝廊 ===== */
+.vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
+.egg{max-width:760px;display:grid;justify-items:center;gap:22px;padding-top:36px}
+.egg-wrap{width:100%;filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
+.egg-stage{position:relative;width:100%;aspect-ratio:16/9;background:#14100e}
+.egg-poster{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(#f7e4d0,#efd2b7)}
+.egg-poster>img{width:100%;height:100%;object-fit:cover;display:block}
+.egg-poster>img.lg{width:min(62%,360px);height:auto;object-fit:contain}
+.egg-poster .ph{position:absolute;inset:0;display:grid;place-items:center;background:rgba(20,16,14,.78);color:var(--muted);letter-spacing:.12em}
+.egg-stage video,.egg-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;object-fit:contain}
+.egg-cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;min-height:92px}
+.join{max-width:620px;margin-inline:auto;display:grid;gap:30px}
+.note-w{position:relative;filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+.note{background:linear-gradient(#fbe8d5,#f4dac0);color:var(--ink);text-align:center;padding:32px 22px;display:grid;gap:12px}
+.note p{margin:0}
+.n1{font-size:clamp(1.05rem,4.4vw,1.3rem);font-weight:500;letter-spacing:.18em;line-height:1.9}
+.n2{font-size:clamp(.85rem,3.4vw,1rem);letter-spacing:.14em;line-height:1.9}
+.tape{position:absolute;width:76px;height:28px;opacity:.92;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.tape.y{left:-8px;top:-2px;background:#f0c65a;transform:rotate(-26deg)}
+.tape.b{right:-8px;bottom:0;background:#9cc3ea;transform:rotate(-30deg)}
+.jcard-w{filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
+.jcard{background:linear-gradient(#fbe8d5,#f4dac0);color:var(--ink);padding:34px clamp(18px,6vw,48px) 36px;display:grid;gap:10px}
+.jcard .ticks{color:#e39a2a}
+.upl-row{display:flex;align-items:center;justify-content:center;gap:clamp(4px,3vw,18px);margin-bottom:10px}
+.upl{position:relative;flex:1;max-width:440px}
+.upl-in{display:grid;place-items:center;align-content:center;gap:10px;min-height:190px;border:2.5px dashed #9a7352;border-radius:26px;cursor:pointer;text-align:center;font-size:1.15rem;letter-spacing:.16em;color:#5a3d22;padding:14px;position:relative;overflow:hidden}
+.upl:focus-within .upl-in{outline:2px solid #c9792b;outline-offset:3px}
+.upl-in.has{padding:10px;border-style:solid;border-color:#c5a07d}
+.upl-in img{max-width:100%;max-height:260px;border-radius:14px;object-fit:contain}
+.upl-in .chg{font-size:.9rem;color:#7a4d22;letter-spacing:.1em}
+.fl{font-weight:700;letter-spacing:.14em;font-size:1.05rem;margin-top:10px}
+.fl small{font-weight:400;font-size:.8em}
+.req{color:#d33a1f}
+.jcard input[type=text],.jcard textarea{width:100%;background:#fdebd9;border:2px solid #c5a07d;border-radius:22px;padding:12px 18px;font:inherit;letter-spacing:.06em;color:var(--ink);resize:vertical}
+.jcard input[type=text]:focus,.jcard textarea:focus{outline:2px solid #c9792b;outline-offset:2px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.chk{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:.12em;margin-top:12px}
+.chk input{width:28px;height:28px;accent-color:#7a4d22;flex:none}
+.jmsg{min-height:1.5em;color:#a33a1f;font-weight:500;letter-spacing:.06em}
+.jsub{display:flex;align-items:center;justify-content:center;gap:clamp(4px,3vw,18px)}
+.btn-dark{background:linear-gradient(#7b4d25,#5b3519);color:#fbe8d5;border-radius:999px;padding:16px clamp(16px,5vw,40px);white-space:nowrap;font-size:clamp(1rem,4.2vw,1.35rem);font-weight:500;letter-spacing:.16em;box-shadow:0 6px 14px rgba(60,35,15,.45),inset 0 1px 0 rgba(255,255,255,.2)}
+.btn-dark:disabled{opacity:.7;cursor:default}
+.jdone{background:linear-gradient(#fbe8d5,#f4dac0);color:var(--ink);border-radius:30px;padding:36px 22px;text-align:center;display:grid;gap:16px;justify-items:center}
+.jdone h2{margin:0;font-size:1.8rem;letter-spacing:.14em}
+.jdone p{margin:0;letter-spacing:.12em;line-height:1.9}
+.gscene{position:relative;height:clamp(520px,calc(100vh - 96px),760px);height:clamp(520px,calc(100svh - 96px),760px);overflow:hidden;margin-top:-4px}
+.gwall{position:absolute;left:0;right:0;top:0;height:66%;background:radial-gradient(ellipse at 50% 45%,#5b4435 0,#3d2e25 75%)}
+.gfloor{position:absolute;left:0;right:0;top:66%;bottom:0;background:linear-gradient(#80593a,#b8864d);box-shadow:inset 0 6px 8px rgba(0,0,0,.35);
+  background-image:linear-gradient(#80593a,#b8864d),repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 1px,transparent 1px 84px);background-blend-mode:normal}
+.gtrack{position:absolute;left:0;right:0;top:0;height:66%;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.gtrack::-webkit-scrollbar{display:none}
+.gslot{flex:0 0 33.3333%;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;padding:0 2%}
+.gslot:nth-child(3n+1){scroll-snap-align:start}
+.gslot::before{content:"";position:absolute;left:0;right:0;top:calc(50% - 150px);height:300px;background:radial-gradient(ellipse 62% 58% at 50% 0,rgba(255,206,130,.3),transparent 72%);pointer-events:none}
+.glamp{width:clamp(26px,9vw,40px);height:auto;position:relative;margin-bottom:4px}
+.gframe{position:relative;display:block;width:88%;aspect-ratio:5/4;padding:clamp(3px,1.2vw,6px);border-radius:3px;background:linear-gradient(135deg,#f0c777,#b9822f 45%,#e6b866 62%,#9a6a26);box-shadow:0 10px 18px rgba(0,0,0,.5),0 0 0 1px rgba(0,0,0,.35)}
+.gframe img{display:block;width:100%;height:100%;object-fit:contain;background:#f7ecdc;border:clamp(2px,.8vw,4px) solid #f7ecdc;box-shadow:inset 0 0 6px rgba(0,0,0,.35)}
+.gplaq{max-width:94%;background:linear-gradient(#f8e8d3,#ecd3b4);color:var(--ink);font-size:clamp(.7rem,2.6vw,.85rem);letter-spacing:.1em;padding:.3em .9em;border-radius:14px;box-shadow:0 3px 8px rgba(0,0,0,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gslot:hover .gframe{filter:brightness(1.06)}
+.gbench{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);width:min(48%,300px);height:auto;pointer-events:none}
+.gnav{position:absolute;top:33%;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.4);z-index:3}
+.gnav.prev{left:max(8px,env(safe-area-inset-left,0px))}
+.gnav.next{right:max(8px,env(safe-area-inset-right,0px))}
+.gnav:disabled{opacity:.3;cursor:default}
+.gdots{position:absolute;left:0;right:0;bottom:calc(2.5% + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;gap:4px;z-index:3}
+.gdot{width:26px;height:26px;display:grid;place-items:center}
+.gdot::after{content:"";width:13px;height:13px;border-radius:50%;border:1.5px solid #f3e6d6;background:transparent;transition:background .2s}
+.gdot.on::after{background:#f3e6d6}
+.gempty{position:absolute;left:0;right:0;top:30%;text-align:center;color:var(--muted);letter-spacing:.14em;z-index:2}
+.titlerow.nb{grid-template-columns:minmax(0,1fr)}
+.titlerow.nb h1,.titlerow.nb .by{grid-column:1}
 </style>
 
 <div id="top"></div>
@@ -208,7 +305,9 @@ svg{display:block}
 <main id="app"></main>
 <div class="scrim" id="scrim"></div>
 <nav class="drawer" id="drawer" aria-label="主選單" aria-hidden="true"></nav>
-<div class="lb" id="lb" role="dialog" aria-label="作品放大檢視"><button type="button" data-act="lbclose" aria-label="關閉"></button><img alt=""></div>
+<div class="lb" id="lb" role="dialog" aria-label="作品放大檢視"><button type="button" data-act="lbclose" aria-label="關閉"></button><img alt="" draggable="false"><div class="lb-ctl"><button type="button" data-act="zout" aria-label="縮小">−</button><button type="button" data-act="zreset" aria-label="還原大小">還原</button><button type="button" data-act="zin" aria-label="放大">+</button></div></div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="提示" hidden><div class="mb"></div></div>
 
 <script>
 /* ===== 範例資料:欄位對應 Google 試算表的四個分頁(works / artists / records / site) =====
@@ -217,7 +316,8 @@ var SAMPLE = {
   site: {
     title: "我之所以是我", subtitle: "藝術聯展",
     about: "「我之所以是我」是一場關於自我、經驗與創作的聯合展覽。\n21 位創作者以各自的視角與媒材,分享那些形塑自我的片段、感受與思考,邀請觀眾一同探索每一個獨特的「我」。",
-    about_image: "about.jpg", total_artists: 21
+    about_image: "about.jpg", total_artists: 21,
+    after_date: "2026-12-06", after_title: "展覽之後", after_text: "這場由我們開始的展覽,\n讓更多人的故事加入。", join_url: "", egg_video: "egg.mp4"
   },
   artists: [
     { artist_id: "a01", name: "林育真", instagram: "https://instagram.com/", website: "https://example.com" },
@@ -251,6 +351,14 @@ var SAMPLE = {
     { type: "展場", image: "rec1.jpg", caption: "展場全景", order: 1 },
     { type: "展場", image: "rec2.jpg", caption: "走廊", order: 2 },
     { type: "展場", image: "rec3.jpg", caption: "休息角落", order: 3 }
+  ],
+  gallery: [
+    { slug: "s1", nickname: "小宇", title: "伸懶腰", message: "伸個懶腰,今天也要好好的。", image: "gal1.jpg" },
+    { slug: "s2", nickname: "阿花", title: "盛開", message: "把喜歡的顏色都畫上去。", image: "gal2.jpg" },
+    { slug: "s3", nickname: "海豚", title: "", message: "", image: "gal3.jpg" },
+    { slug: "s4", nickname: "阿禾", title: "日落", message: "每天抬頭都不太一樣。", image: "gal4.jpg" },
+    { slug: "s5", nickname: "小浪", title: "", message: "", image: "w011.jpg" },
+    { slug: "s6", nickname: "小野", title: "野花", message: "", image: "w013.jpg" }
   ]
 };
 
@@ -280,7 +388,8 @@ var I = {
   img: sv('<rect x="3" y="4" width="18" height="14" rx="2.5"/><circle cx="8" cy="9" r="1.6"/><path d="m3.5 16 5-4.5 4 3.5 3-2.5 5 4.5M9 18v3l3-3"/>',46,1.9),
   people: sv('<circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="4.8" cy="10" r="2.2"/><circle cx="19.2" cy="10" r="2.2"/><path d="M2 17.5c0-2 1.2-3.3 3-3.6M22 17.5c0-2-1.2-3.3-3-3.6"/>',46,1.9),
   info: sv('<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".7" fill="currentColor"/>',46,1.9),
-  close: sv('<path d="M5 5l14 14M19 5 5 19"/>',26,2.4)
+  close: sv('<path d="M5 5l14 14M19 5 5 19"/>',26,2.4),
+  spark: sv('<path d="M12 3l2.2 6.2L20.5 12l-6.3 2.8L12 21l-2.2-6.2L3.5 12l6.3-2.8z"/>',40,1.9)
 };
 
 /* ===== 頁首(撕紙) ===== */
@@ -297,7 +406,11 @@ function buildTop(){
    '<div class="sbar" id="sbar" hidden><div class="wrap"><form class="sform" data-search>'+
    '<input id="q-top" inputmode="numeric" autocomplete="off" placeholder="輸入作品編號(例:012)" aria-label="作品編號">'+
    '<button type="submit" aria-label="搜尋">'+I.searchS+'</button></form><div class="hint" role="status"></div></div></div>';
+  buildDrawer();
+}
+function buildDrawer(){
   var nav=[["home","首頁"],["works","探索作品"],["artists","創作者一覽"],["about","關於展覽"],["records","展覽紀錄"]];
+  if(afterOpen())nav.push(["after","展覽之後"]);
   document.getElementById("drawer").innerHTML='<img src="'+A+'logo.png" alt="">'+nav.map(function(n){return '<a href="#'+n[0]+'" data-nav="'+n[0]+'">'+n[1]+'</a>'}).join("");
 }
 
@@ -312,7 +425,7 @@ function viewHome(){
   '<a class="tile" href="#works">'+I.img+'探索作品</a>'+
   '<a class="tile" href="#artists">'+I.people+'創作者一覽</a>'+
   '<a class="tile" href="#about">'+I.info+'關於展覽</a>'+
-  '<a class="tile" href="#records">'+I.img+'展覽紀錄'+(rec?'':'<small>展後開放</small>')+'</a></div></div>';
+  '<a class="tile" href="#records">'+I.img+'展覽紀錄'+(rec?'':'<small>展後開放</small>')+'</a>'+(afterOpen()?'<a class="tile wide" href="#after">'+I.spark+'展覽之後</a>':'')+'</div></div>';
 }
 function thumbHTML(w,compact){
   return '<a class="thumb" href="#work-'+w.id+'"><img src="'+h(U(w.image,640))+'" alt="'+h(w.title)+'" loading="lazy"><span class="cap"><b>'+h(w.id)+'</b>'+h(w.title)+'</span></a>';
@@ -321,7 +434,7 @@ function viewWork(w){
   var a=artistOf(w), others=worksOf(w.artist_id).filter(function(x){return x.id!==w.id});
   var src=h(U(w.image,1600));
   return '<div class="wrap page"><article class="work">'+
-   '<div class="stage"><img src="'+src+'" alt="'+h(w.title)+'"><button class="fs" type="button" data-act="zoom" data-src="'+src+'" aria-label="全螢幕檢視">'+I.expand+'</button></div>'+
+   '<div class="stage"><img src="'+src+'" alt="'+h(w.title)+'"><button class="fs" type="button" data-act="zoom" data-src="'+h(U(w.image,2400))+'" data-lo="'+src+'" aria-label="全螢幕檢視">'+I.expand+'</button></div>'+
    '<div class="info"><div class="metar"><b>媒材</b><span>'+h(w.medium)+'</span><b>尺寸</b><span>'+h(w.size)+'</span></div>'+
    '<div class="titlerow"><span class="tag num">'+h(w.id)+'</span><h1>'+h(w.title)+'</h1>'+
    '<p class="by">創作者<i class="bar"></i><a class="nm" href="#artist-'+h(a.artist_id)+'">'+h(a.name)+'</a><a class="ico" href="#artist-'+h(a.artist_id)+'" aria-label="前往 '+h(a.name)+' 的創作者資料">'+I.link+'</a></p></div>'+
@@ -370,11 +483,12 @@ function aboutHTML(t){
 function viewAbout(){
   return '<div class="wrap page"><div class="about"><div class="atext">'+aboutHTML(DB.site.about)+'</div><hr class="dash">'+(DB.site.about_image?'<img src="'+h(U(DB.site.about_image,1200))+'" alt="展場一隅">':'')+'</div></div>';
 }
+function viewStatus(){return '<div class="wrap page"><div class="about"><p class="a-h2">資料狀態</p><p class="a-p">來源:'+h(STATUS.src)+'<br>'+h(STATUS.msg)+'<br>目前顯示:作品 '+DB.works.length+' 件、創作者 '+DB.artists.length+' 位<br>展覽之後:'+(afterOpen()?'已開放':'尚未開放')+'(開放日 '+afterDate()+',台灣今天 '+todayTW()+')<br>about 開頭:'+h(String(DB.site.about).slice(0,30))+'</p></div></div>'}
 var recTab="展場";
 function recHTML(){
   var list=DB.records.filter(function(r){return r.type===recTab}).sort(function(a,b){return a.order-b.order});
   if(!list.length)return '<div class="soft">'+(recTab==="活動"?'活動紀錄將於展覽期間陸續更新':'展覽結束後開放')+'</div>';
-  return '<div class="rec">'+list.map(function(r){return '<button type="button" data-act="zoom" data-src="'+h(U(r.image,1600))+'"><img src="'+h(U(r.image,800))+'" alt="'+h(r.caption)+'" loading="lazy">'+(r.caption?'<span class="rc">'+h(r.caption)+'</span>':'')+'</button>'}).join("")+'</div>';
+  return '<div class="rec">'+list.map(function(r){return '<button type="button" data-act="zoom" data-src="'+h(U(r.image,2400))+'" data-lo="'+h(U(r.image,800))+'"><img src="'+h(U(r.image,800))+'" alt="'+h(r.caption)+'" loading="lazy">'+(r.caption?'<span class="rc">'+h(r.caption)+'</span>':'')+'</button>'}).join("")+'</div>';
 }
 function viewRecords(){
   return '<div class="wrap page"><div class="tabs" role="tablist">'+["展場","活動"].map(function(t){return '<button role="tab" type="button" data-act="tab" data-t="'+t+'" aria-selected="'+(recTab===t)+'"><span>'+t+'紀錄</span></button>'}).join("")+'</div><div id="recBody">'+recHTML()+'</div></div>';
@@ -390,7 +504,7 @@ function viewNF(id){
 var app=document.getElementById("app");
 function route(){
   var r=(location.hash||"#home").slice(1), m, html, key="home";
-  closeMenu();document.getElementById("sbar").hidden=true;
+  closeMenu();closeModal();buildDrawer();document.getElementById("sbar").hidden=true;
   var focus="";
   if(r==="home"||r===""){html='';key="home"}
   else if((m=r.match(/^work-(\d+)$/))){var w=byId(m[1]);html=w?viewWork(w):viewNF(m[1]);key="work"}
@@ -399,6 +513,12 @@ function route(){
   else if((m=r.match(/^artist-(\w+)$/))){focus=m[1];openA[focus]=true;html=viewArtists(focus);key="artists"}
   else if(r==="about"){html=viewAbout();key="about"}
   else if(r==="records"){html=viewRecords();key="records"}
+  else if(r==="status"){html=viewStatus();key="status"}
+  else if(r==="egg"){if(afterOpen()){pendingEgg=true;location.replace("#home");return}html=viewEgg();key="egg"}
+  else if(r==="after"){html=viewAfter();key="after"}
+  else if(r==="join"){html=viewJoin();key="join"}
+  else if(r==="gallery"){html=viewGallery();key="gallery"}
+  else if((m=r.match(/^gal-([\w-]+)$/))){var gg=galBySlug(m[1]);html=gg?viewGalWork(gg):'<div class="wrap page"><div class="soft">找不到這幅作品<br><br><a class="btn" href="#gallery">回到藝廊</a></div></div>';key="galwork"}
   else if((m=r.match(/^notfound-(\d*)$/))){html=viewNF(m[1]);key="nf"}
   else {r="home";html='';key="home"}
   document.body.setAttribute("data-route",key==="home"?"home":"page");
@@ -407,6 +527,10 @@ function route(){
   document.querySelectorAll("#drawer a").forEach(function(a){var t=a.getAttribute("data-nav");a.setAttribute("aria-current",(t===r||(t==="artists"&&key==="artists")||(t==="works"&&key==="work")||(t==="home"&&key==="home"))?"page":"false")});
   if(focus){var el=document.getElementById("artist-"+focus);if(el)setTimeout(function(){el.scrollIntoView({block:"start"})},30)}else window.scrollTo(0,0);
   var q=document.querySelector("#app input[inputmode]");if(q&&key==="nf")q.focus({preventScroll:true});
+  if(key==="egg")initEgg();
+  if(key==="join")initJoin();
+  if(key==="gallery")initGallery();
+  if(pendingEgg&&key==="home"){pendingEgg=false;eggEnd()}
 }
 window.addEventListener("hashchange",route);
 
@@ -416,6 +540,7 @@ function goSearch(raw,form){
   var hint=form.parentNode.querySelector(".hint");
   if(!d){if(hint)hint.textContent="請輸入作品旁的數字編號,例如 012";return}
   var id=d.length<3?("000"+d).slice(-3):d;
+  if(id==="000"){if(hint)hint.textContent="";if(afterOpen())eggEnd();else if(location.hash==="#egg")route();else location.hash="egg";return}
   var target=byId(id)?("work-"+id):("notfound-"+id);
   if(location.hash==="#"+target)route();else location.hash=target;
 }
@@ -424,15 +549,21 @@ document.addEventListener("submit",function(e){var f=e.target.closest("form[data
 /* ===== 互動 ===== */
 var drawer=document.getElementById("drawer"),scrim=document.getElementById("scrim"),lb=document.getElementById("lb");
 function closeMenu(){drawer.classList.remove("on");scrim.classList.remove("on");drawer.setAttribute("aria-hidden","true");var b=document.querySelector('[data-act="menu"]');if(b)b.setAttribute("aria-expanded","false")}
-function openLB(src){lb.querySelector("img").src=src;lb.classList.add("on")}
-function closeLB(){lb.classList.remove("on")}
+function openLB(src,lo){zReset();zImg.src=lo||src;if(lo&&lo!==src){var t=new Image();t.onload=function(){if(lb.classList.contains("on"))zImg.src=src};t.src=src}lb.classList.add("on");document.body.style.overflow="hidden";zApply()}
+function closeLB(){lb.classList.remove("on");document.body.style.overflow=""}
 document.addEventListener("click",function(e){
   if(e.target===scrim){closeMenu();return}
-  if(e.target===lb||e.target.tagName==="IMG"&&lb.contains(e.target)){closeLB();return}
+  if(e.target===modal){closeModal();return}
+  if(e.target===lb){if(Z.s<1.02&&!Z.moved)closeLB();return}
   var b=e.target.closest("[data-act]");if(!b)return;var act=b.getAttribute("data-act");
   if(act==="menu"){drawer.classList.add("on");scrim.classList.add("on");drawer.setAttribute("aria-hidden","false");b.setAttribute("aria-expanded","true")}
   else if(act==="sbar"){var s=document.getElementById("sbar");s.hidden=!s.hidden;b.setAttribute("aria-expanded",String(!s.hidden));if(!s.hidden)document.getElementById("q-top").focus()}
-  else if(act==="zoom")openLB(b.getAttribute("data-src"));
+  else if(act==="zoom")openLB(b.getAttribute("data-src"),b.getAttribute("data-lo"));
+  else if(act==="zin")zoomBy(1.5);
+  else if(act==="zout")zoomBy(1/1.5);
+  else if(act==="zreset")zReset(true);
+  else if(act==="egg")startEgg();
+  else if(act==="mclose")closeModal();
   else if(act==="lbclose")closeLB();
   else if(act==="acc"){var id=b.getAttribute("data-id");openA[id]=!openA[id];var sec=document.getElementById("artist-"+id);sec.classList.toggle("open",!!openA[id]);b.setAttribute("aria-expanded",String(!!openA[id]))}
   else if(act==="tab"){recTab=b.getAttribute("data-t");document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",String(x===b))});document.getElementById("recBody").innerHTML=recHTML()}
@@ -440,12 +571,251 @@ document.addEventListener("click",function(e){
 document.addEventListener("change",function(e){
   if(e.target.id==="f-artist"||e.target.id==="f-type"){filt.artist=document.getElementById("f-artist").value;filt.type=document.getElementById("f-type").value;document.getElementById("grid").innerHTML=gridHTML()}
 });
-document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeLB();closeMenu()}});
-lb.querySelector("button").innerHTML=I.close;
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeLB();closeMenu();closeModal()}
+  if(lb.classList.contains("on")){if(e.key==="+"||e.key==="=")zoomBy(1.5);else if(e.key==="-")zoomBy(1/1.5);else if(e.key==="0")zReset(true)}});
+lb.querySelector('button').innerHTML=I.close;
+
+/* ===== 放大檢視:雙指縮放、滾輪縮放、拖曳平移、雙擊切換、按鈕 ===== */
+var Z={s:1,x:0,y:0,moved:false},zImg=lb.querySelector('img'),zP={},zLast=null,zPinch=null;
+function zApply(smooth){
+  var vw=lb.clientWidth,vh=lb.clientHeight,w=zImg.clientWidth*Z.s,hh=zImg.clientHeight*Z.s;
+  var mx=Math.max(0,(w-vw)/2),my=Math.max(0,(hh-vh)/2);
+  Z.x=Math.min(mx,Math.max(-mx,Z.x));Z.y=Math.min(my,Math.max(-my,Z.y));
+  zImg.classList.toggle('smooth',!!smooth);
+  zImg.style.transform='translate('+Z.x+'px,'+Z.y+'px) scale('+Z.s+')';
+  lb.classList.toggle('zoomed',Z.s>1.02);
+}
+function zReset(smooth){Z.s=1;Z.x=0;Z.y=0;Z.moved=false;zP={};zPinch=null;zApply(smooth)}
+function zoomAt(ns,px,py,smooth){
+  ns=Math.min(5,Math.max(1,ns));
+  var r=lb.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,k=ns/Z.s;
+  Z.x=(px-cx)-((px-cx)-Z.x)*k;Z.y=(py-cy)-((py-cy)-Z.y)*k;Z.s=ns;
+  if(ns===1){Z.x=0;Z.y=0}
+  zApply(smooth);
+}
+function zoomBy(f){var r=lb.getBoundingClientRect();zoomAt(Z.s*f,r.left+r.width/2,r.top+r.height/2,true)}
+function zPts(){return Object.keys(zP).map(function(k){return zP[k]})}
+function zDist(){var a=zPts();return Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)||1}
+lb.addEventListener('pointerdown',function(e){
+  if(e.target.closest('button'))return;
+  zP[e.pointerId]={x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY};
+  Z.moved=false;zImg.classList.remove('smooth');
+  if(Object.keys(zP).length===2){var a=zPts();zPinch={d:zDist(),s:Z.s,mx:(a[0].x+a[1].x)/2,my:(a[0].y+a[1].y)/2}}
+});
+window.addEventListener('pointermove',function(e){
+  var p=zP[e.pointerId];if(!p)return;
+  var dx=e.clientX-p.x,dy=e.clientY-p.y;
+  if(Math.abs(e.clientX-p.sx)+Math.abs(e.clientY-p.sy)>8)Z.moved=true;
+  p.x=e.clientX;p.y=e.clientY;
+  if(Object.keys(zP).length===2&&zPinch){
+    var a=zPts(),mx=(a[0].x+a[1].x)/2,my=(a[0].y+a[1].y)/2;
+    Z.x+=mx-zPinch.mx;Z.y+=my-zPinch.my;zPinch.mx=mx;zPinch.my=my;
+    zoomAt(zPinch.s*zDist()/zPinch.d,mx,my);
+  }else if(Object.keys(zP).length===1&&Z.s>1.02){Z.x+=dx;Z.y+=dy;zApply()}
+});
+function zUp(e){
+  if(!zP[e.pointerId])return;
+  delete zP[e.pointerId];zPinch=null;
+  var n=Object.keys(zP).length;
+  if(n===0&&!Z.moved&&e.type==='pointerup'&&e.target===zImg){
+    var t=Date.now();
+    if(zLast&&t-zLast.t<320&&Math.abs(zLast.x-e.clientX)<30&&Math.abs(zLast.y-e.clientY)<30){
+      zLast=null;if(Z.s>1.02)zReset(true);else zoomAt(2.5,e.clientX,e.clientY,true);
+    }else zLast={t:t,x:e.clientX,y:e.clientY};
+  }
+  if(n===1){var q=zPts()[0];q.sx=q.x;q.sy=q.y}
+}
+window.addEventListener('pointerup',zUp);window.addEventListener('pointercancel',zUp);
+lb.addEventListener('wheel',function(e){
+  e.preventDefault();zImg.classList.remove('smooth');
+  zoomAt(Z.s*Math.exp(-e.deltaY*(e.ctrlKey?0.01:0.0015)),e.clientX,e.clientY);
+},{passive:false});
+lb.addEventListener('gesturestart',function(e){e.preventDefault()});
+window.addEventListener('resize',function(){if(lb.classList.contains('on'))zApply()});
+
+
+
+/* ===== 彩蛋(首頁輸入 000)與「展覽之後」=====
+   開放日 after_date(試算表 site 分頁,格式 2026-12-06,以台灣時間計):
+   之前 → 輸入 000 進入彩蛋頁,首頁沒有「展覽之後」按鈕。
+   之後 → 首頁出現「展覽之後」按鈕,輸入 000 只跳出提示。 */
+var pendingEgg=false;
+function todayTW(){return new Date(Date.now()+480*60000).toISOString().slice(0,10)}
+function afterDate(){var m=String(DB.site.after_date||'').match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+  return m?m[1]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[3]).slice(-2):'2026-12-06'}
+function afterOpen(){return todayTW()>=afterDate()}
+var modal=document.getElementById('modal');
+function showModal(t,msg,links){
+  modal.querySelector('.mb').innerHTML='<h2>'+h(t)+'</h2><p>'+h(msg)+'</p>'+
+    (links&&links.length?'<div class="mlinks">'+links.map(function(l){return '<a href="'+l[0]+'">'+h(l[1])+'</a>'}).join('')+'</div>':'')+
+    '<button type="button" class="mx" data-act="mclose">知道了</button>';
+  modal.hidden=false}
+function closeModal(){modal.hidden=true}
+function eggEnd(){showModal('彩蛋結束囉','可以到「關於展覽」跟「展覽之後」去看內容',[['#about','關於展覽'],['#after','展覽之後']])}
+function tornBox(n,a,seed){var s=seed,r=function(){s=(s*9301+49297)%233280;return s/233280},p=[],i;
+  for(i=0;i<=n;i++)p.push((i/n*100).toFixed(1)+'% '+(r()*a).toFixed(1)+'%');
+  for(i=1;i<=n;i++)p.push((100-r()*a).toFixed(1)+'% '+(i/n*100).toFixed(1)+'%');
+  for(i=n-1;i>=0;i--)p.push((i/n*100).toFixed(1)+'% '+(100-r()*a).toFixed(1)+'%');
+  for(i=n-1;i>=1;i--)p.push((r()*a).toFixed(1)+'% '+(i/n*100).toFixed(1)+'%');
+  return 'polygon('+p.join(',')+')'}
+function ticksUp(){return '<svg class="ticks" width="84" height="44" viewBox="0 0 84 44" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" aria-hidden="true"><path d="M42 6v14M18 12l8 12M66 12l-8 12"/></svg>'}
+function ticksSide(d){return '<svg class="ticks" width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" aria-hidden="true"><path d="'+(d<0?'M34 8l-18 8M38 22H14M34 36l-18-8':'M10 8l18 8M6 22h24M10 36l18-8')+'"/></svg>'}
+/* ---- 彩蛋頁:影片播完才出現兩顆按鈕 ---- */
+function viewEgg(){
+  var poster=String(DB.site.egg_poster||'').trim();
+  return '<div class="wrap page egg"><div class="egg-wrap"><div class="egg-stage" id="eggStage"><div class="egg-poster" id="eggPoster">'+
+    (poster?'<img src="'+h(U(poster,1600))+'" alt="">':'<img class="lg" src="'+A+'logo-cover.png" alt="'+h(DB.site.title+' '+DB.site.subtitle)+'">')+
+    '</div></div></div><div class="egg-cta" id="eggCta">'+ticksSide(-1)+
+    '<button type="button" class="pill" data-act="egg"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>開始觀看</button>'+ticksSide(1)+'</div></div>';
+}
+function initEgg(){var b=document.getElementById('eggStage');if(b)b.style.clipPath=tornBox(22,1.4,11)}
+var eggDoneFlag=false;
+function eggDone(){
+  if(eggDoneFlag)return;eggDoneFlag=true;
+  var c=document.getElementById('eggCta');
+  if(c)c.innerHTML='<a class="pill" href="#about">想了解更多</a><a class="pill blue" href="#after">展覽之後</a>';
+}
+function ytLoad(cb){
+  if(window.YT&&YT.Player){cb();return}
+  var prev=window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady=function(){if(prev)prev();cb()};
+  if(!document.getElementById('ytapi')){var s=document.createElement('script');s.id='ytapi';s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s)}
+}
+function startEgg(){
+  var st=document.getElementById('eggStage'),po=document.getElementById('eggPoster');if(!st)return;
+  eggDoneFlag=false;document.getElementById('eggCta').innerHTML='';
+  var src=String(DB.site.egg_video||'').trim();
+  var yt=src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/),dr=src.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+  if(!src){po.insertAdjacentHTML('beforeend','<div class="ph">影片準備中</div>');eggDone();return}
+  po.hidden=true;
+  if(yt){
+    st.insertAdjacentHTML('beforeend','<div id="eggYT"></div>');
+    ytLoad(function(){new YT.Player('eggYT',{videoId:yt[1],width:'100%',height:'100%',playerVars:{autoplay:1,playsinline:1,rel:0},events:{onStateChange:function(e){if(e.data===0)eggDone()},onError:function(){eggDone()}}})});
+    setTimeout(function(){if(!(window.YT&&YT.Player)){var d=document.getElementById('eggYT');if(d)d.outerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+yt[1]+'?autoplay=1&playsinline=1&rel=0" allow="autoplay; fullscreen" allowfullscreen title="展覽影片"></iframe>';eggDone()}},6000);
+  }else if(dr){
+    st.insertAdjacentHTML('beforeend','<iframe src="https://drive.google.com/file/d/'+dr[1]+'/preview" allow="autoplay; fullscreen" allowfullscreen title="展覽影片"></iframe>');
+    eggDone();
+  }else{
+    st.insertAdjacentHTML('beforeend','<video src="'+h(/^https?:\/\//.test(src)?src:A+src)+'" controls autoplay playsinline controlslist="nodownload"></video>');
+    var v=st.querySelector('video');
+    v.addEventListener('ended',eggDone);
+    v.addEventListener('error',function(){st.insertAdjacentHTML('beforeend','<div class="ph" style="position:absolute;inset:0;background:#14100e">影片載入失敗,請稍後再試</div>');eggDone()});
+    var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});
+  }
+}
+
+/* ---- 展覽之後 ---- */
+function viewAfter(){
+  var s=DB.site;
+  return '<div class="wrap page"><div class="af"><div class="af-title">'+ticksSide(-1)+'<h1>'+h(s.after_title||'展覽之後')+'</h1>'+ticksSide(1)+'</div>'+
+   '<svg viewBox="0 0 320 16" style="width:min(320px,72%);height:auto" fill="none" stroke="#e8c9a8" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M4 10C90 3 210 3 316 9"/></svg>'+
+   '<p class="af-text">'+nl(s.after_text)+'</p>'+ticksUp()+
+   '<div class="puzzle"><svg viewBox="0 0 860 270" aria-hidden="true">'+
+   '<path d="M38 4H386A34 34 0 0 1 420 38V96C456 96 456 174 420 174V232A34 34 0 0 1 386 266H38A34 34 0 0 1 4 232V38A34 34 0 0 1 38 4Z" fill="#fbe8d5" stroke="#2b1f17" stroke-width="3.5" stroke-linejoin="round"/>'+
+   '<path d="M466 4H822A34 34 0 0 1 856 38V232A34 34 0 0 1 822 266H466A34 34 0 0 1 432 232V174C468 174 468 96 432 96V38A34 34 0 0 1 466 4Z" fill="#dce6f0" stroke="#2b1f17" stroke-width="3.5" stroke-linejoin="round"/></svg>'+
+   '<a class="pz pz-l" href="#join">我也想參展 →</a><a class="pz pz-r" href="#gallery">逛逛大家的作品 →</a></div></div></div>';
+}
+
+/* ---- 我也想參展:觀眾投稿表單 ---- */
+function viewJoin(){
+  return '<div class="wrap page"><div class="join">'+
+   '<div class="note-w"><div class="note"><p class="n1">你可以現在畫,也可以帶回家,<br>等某一天想畫的時候再畫。</p><p class="n2">只要將你票券的「想畫就畫」空白畫布上的創作拍照上傳,<br>就能讓它成為這場展覽的一部分。</p></div><i class="tape y"></i><i class="tape b"></i></div>'+
+   '<div class="jcard-w"><form class="jcard" id="joinForm" novalidate>'+
+   '<div class="upl-row">'+ticksSide(-1)+'<div class="upl"><input type="file" id="jFile" class="vh" accept="image/*"><label class="upl-in" id="jUpl" for="jFile"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg><span>上傳作品照片</span></label></div>'+ticksSide(1)+'</div>'+
+   '<label class="fl" for="jNick">創作者暱稱 <b class="req">*</b></label><input type="text" id="jNick" maxlength="20" autocomplete="off">'+
+   '<label class="fl" for="jTitle">作品名稱 <small>(選填)</small></label><input type="text" id="jTitle" maxlength="40" autocomplete="off">'+
+   '<label class="fl" for="jMsg">想說的話 <small>(選填)</small></label><textarea id="jMsg" maxlength="500" rows="4"></textarea>'+
+   '<input type="text" id="jWeb" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">'+
+   '<label class="chk" for="jOk"><input type="checkbox" id="jOk">同意公開展示我的作品</label>'+
+   '<div class="jmsg" id="jMsgBox" role="status"></div>'+
+   '<div class="jsub">'+ticksSide(-1)+'<button type="submit" class="btn-dark" id="jSend">送出我的創作 →</button>'+ticksSide(1)+'</div></form></div>'+
+   '<div class="jdone" id="jDone" hidden><h2>收到囉!</h2><p>謝謝你的創作。<br>作品經過確認後,會出現在藝廊裡。</p><a class="pill" href="#gallery">逛逛大家的作品 →</a><a class="pill blue" href="#after">回到展覽之後</a></div>'+
+   '</div></div>';
+}
+function toJpeg(file,max,q){
+  return new Promise(function(res,rej){
+    var url=URL.createObjectURL(file),img=new Image();
+    img.onload=function(){
+      var r=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight)),w=Math.round(img.naturalWidth*r),hh=Math.round(img.naturalHeight*r),c=document.createElement('canvas');
+      c.width=w;c.height=hh;c.getContext('2d').drawImage(img,0,0,w,hh);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',q))};
+    img.onerror=function(){URL.revokeObjectURL(url);rej(new Error('img'))};
+    img.src=url;
+  });
+}
+function initJoin(){
+  var f=document.getElementById('joinForm');if(!f)return;
+  var nw=document.querySelector('.note'),jc=document.querySelector('.jcard');
+  if(nw)nw.style.clipPath=tornBox(44,.9,5);if(jc)jc.style.clipPath=tornBox(44,.8,12);
+  var file=document.getElementById('jFile'),upl=document.getElementById('jUpl'),box=document.getElementById('jMsgBox'),btn=document.getElementById('jSend'),sendHTML=btn.innerHTML,data='',busy=false;
+  function say(t){box.textContent=t||''}
+  file.addEventListener('change',function(){
+    var fl=file.files&&file.files[0];if(!fl)return;say('');
+    toJpeg(fl,1600,.85).then(function(u){data=u;upl.classList.add('has');upl.innerHTML='<img src="'+u+'" alt="已選擇的作品照片"><span class="chg">更換照片</span>'})
+      .catch(function(){data='';say('這張照片無法讀取,請換一張試試。')});
+  });
+  f.addEventListener('submit',function(e){
+    e.preventDefault();if(busy)return;
+    var nick=document.getElementById('jNick').value.trim();
+    if(!data){say('請先上傳作品照片');return}
+    if(!nick){say('請填寫創作者暱稱');document.getElementById('jNick').focus();return}
+    var url=String(DB.site.submit_url||'').trim();
+    if(!url){say('目前是示範模式,作品不會被送出。');return}
+    busy=true;btn.disabled=true;btn.textContent='送出中…';say('');
+    fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({
+      nickname:nick,title:document.getElementById('jTitle').value.trim(),message:document.getElementById('jMsg').value.trim(),
+      consent:document.getElementById('jOk').checked,website:document.getElementById('jWeb').value,image:data})})
+     .then(function(r){return r.json()})
+     .then(function(j){if(!j||!j.ok)throw new Error(j&&j.error||'fail');f.parentNode.hidden=true;document.getElementById('jDone').hidden=false;window.scrollTo(0,0)})
+     .catch(function(){busy=false;btn.disabled=false;btn.innerHTML=sendHTML;say('送出失敗,請確認網路後再試一次。')});
+  });
+}
+
+/* ---- 藝廊:一次三幅,左右滑換頁,椅子不動 ---- */
+var galPage=0;
+function gSlug(g){return g.slug||String(g.id||'').replace(/[^\w-]/g,'')}
+function galBySlug(s){return (DB.gallery||[]).filter(function(g){return gSlug(g)===s})[0]}
+var LAMP='<svg class="glamp" viewBox="0 0 60 40" aria-hidden="true"><defs><linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0ab55"/><stop offset="1" stop-color="#a8742e"/></linearGradient></defs><path d="M8 30C8 14 20 8 30 8s22 6 22 22z" fill="url(#lg1)"/><rect x="4" y="29" width="52" height="5" rx="2.5" fill="#85592a"/><ellipse cx="30" cy="36" rx="9" ry="3.5" fill="#ffe3a8"/></svg>';
+function viewGallery(){
+  var items=DB.gallery||[],pages=Math.max(1,Math.ceil(items.length/3)),slots='',i,g;
+  if(galPage>pages-1)galPage=0;
+  for(i=0;i<pages*3;i++){
+    g=items[i];
+    if(!g){slots+='<div class="gslot empty" aria-hidden="true"></div>';continue}
+    slots+='<a class="gslot" href="#gal-'+h(gSlug(g))+'">'+LAMP+'<span class="gframe"><img src="'+h(U(g.image,640))+'" alt="'+h(g.title||g.nickname)+'" loading="lazy" draggable="false"></span><span class="gplaq">· '+h(g.nickname)+' ·</span></a>';
+  }
+  var dots='';for(i=0;i<pages;i++)dots+='<button type="button" class="gdot" aria-label="第 '+(i+1)+' 頁"></button>';
+  return '<div class="gscene"><div class="gwall"></div><div class="gfloor"></div>'+
+    (items.length?'':'<p class="gempty">作品即將上牆</p>')+
+    '<div class="gtrack" id="galTrack" data-pages="'+pages+'">'+slots+'</div>'+
+    '<svg class="gbench" viewBox="0 0 300 120" aria-hidden="true"><ellipse cx="150" cy="112" rx="125" ry="7" fill="rgba(0,0,0,.28)"/><path d="M52 56h22l-6 54H52zM226 56h22l-3 54h-16z" fill="#8a5c2b"/><path d="M14 38h272l-10 22H24z" fill="#b8843f"/><rect x="14" y="26" width="272" height="16" rx="5" fill="#e0b36a"/><rect x="14" y="26" width="272" height="5" rx="2.5" fill="#f1cc8a"/></svg>'+
+    '<button type="button" class="gnav prev" id="galPrev" aria-label="上一頁">'+sv('<path d="m15 5-7 7 7 7"/>',24,2.6)+'</button>'+
+    '<button type="button" class="gnav next" id="galNext" aria-label="下一頁">'+sv('<path d="m9 5 7 7-7 7"/>',24,2.6)+'</button>'+
+    '<div class="gdots">'+dots+'</div></div>';
+}
+function initGallery(){
+  var t=document.getElementById('galTrack');if(!t)return;
+  var pages=+t.getAttribute('data-pages')||1,prev=document.getElementById('galPrev'),next=document.getElementById('galNext'),dots=[].slice.call(document.querySelectorAll('.gdot')),tick=null;
+  function cur(){return Math.max(0,Math.min(pages-1,Math.round(t.scrollLeft/(t.clientWidth||1))))}
+  function sync(){var p=cur();galPage=p;dots.forEach(function(d,i){d.classList.toggle('on',i===p);d.setAttribute('aria-current',i===p?'true':'false')});prev.disabled=p<=0;next.disabled=p>=pages-1}
+  function go(p){t.scrollTo({left:Math.max(0,Math.min(pages-1,p))*t.clientWidth,behavior:'smooth'})}
+  t.scrollLeft=galPage*t.clientWidth;
+  t.addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=null;sync()})});
+  prev.addEventListener('click',function(){go(cur()-1)});next.addEventListener('click',function(){go(cur()+1)});
+  dots.forEach(function(d,i){d.addEventListener('click',function(){go(i)})});
+  sync();
+}
+function viewGalWork(g){
+  var src=h(U(g.image,1600)),big=h(U(g.image,2400)),msg=String(g.message||'').trim(),no=String(g.no||'').trim();
+  return '<div class="wrap page"><article class="work"><div class="stage"><img src="'+src+'" alt="'+h(g.title||g.nickname)+'"><button class="fs" type="button" data-act="zoom" data-src="'+big+'" data-lo="'+src+'" aria-label="全螢幕檢視">'+I.expand+'</button></div>'+
+   '<div class="info"><div class="titlerow'+(no?'':' nb')+'">'+(no?'<span class="tag num">'+h(no)+'</span>':'')+'<h1>'+h(g.title||'無題')+'</h1><p class="by">創作者<i class="bar"></i><span>'+h(g.nickname)+'</span></p></div>'+
+   (msg?'<hr class="dash"><h2 class="tag">想說的話</h2><p class="concept">'+nl(msg)+'</p>':'')+'</div>'+
+   '<div class="more-wrap"><hr class="dash"><a class="more" href="#gallery" style="justify-content:center">'+sv('<path d="m15 5-7 7 7 7"/>',22,2.4)+'回到藝廊</a></div></article></div>';
+}
 
 
 /* ===== 資料來源:Google 試算表(已設為「知道連結的人可檢視」)=====
    讀取順序:瀏覽器快取 → 試算表即時資料;兩者都失敗時使用上面的範例資料。 */
+var STATUS={src:"範例資料",msg:"尚未連線"};
 var CFG={sheetId:"1I0U6nRu2aj06ef7hcYDE_h46YoNjAhaqVqjAm_6lVZQ",cacheKey:"expo-data-v1"};
 function parseCSV(t){var rows=[],r=[],f="",q=false,i=0,c;t=t.replace(/^﻿/,"");
   for(;i<t.length;i++){c=t.charAt(i);
@@ -455,13 +825,19 @@ function parseCSV(t){var rows=[],r=[],f="",q=false,i=0,c;t=t.replace(/^﻿/,"");
     else if(c==="\n"||c==="\r"){if(c==="\r"&&t.charAt(i+1)==="\n")i++;r.push(f);f="";rows.push(r);r=[]}
     else f+=c}
   if(f!==""||r.length){r.push(f);rows.push(r)}return rows}
-function toObjs(rows){if(!rows.length)return [];var hd=rows[0].map(function(x){return x.trim().toLowerCase()});
-  return rows.slice(1).filter(function(r){return r.some(function(x){return x.trim()})}).map(function(r){var o={};hd.forEach(function(k,i){o[k]=(r[i]||"").trim()});return o})}
-function fetchTab(n){return fetch("https://docs.google.com/spreadsheets/d/"+CFG.sheetId+"/gviz/tq?tqx=out:csv&sheet="+encodeURIComponent(n))
+function toObjs(rows){if(rows.length>1&&rows[0].every(function(x){return /^[A-Z]{0,2}$/.test(x.trim())}))rows=rows.slice(1);if(!rows.length)return [];var hd=rows[0].map(function(x){return x.trim().toLowerCase()});
+  var res=rows.slice(1).filter(function(r){return r.some(function(x){return x.trim()})}).map(function(r){var o={};hd.forEach(function(k,i){o[k]=(r[i]||"").trim()});return o});res.cols=hd;return res}
+function fetchTab(n){return fetch("https://docs.google.com/spreadsheets/d/"+CFG.sheetId+"/gviz/tq?tqx=out:csv&headers=1&sheet="+encodeURIComponent(n))
   .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.text()}).then(function(t){return toObjs(parseCSV(t))})}
 function hasCols(rows,keys){return rows.length>0&&keys.every(function(k){return k in rows[0]})}
 function pad3(s){s=String(s||"").trim();return /^\d+$/.test(s)&&s.length<3?("000"+s).slice(-3):s}
-function buildDB(W,AR,RE,SI){
+function galFrom(GA){
+  if(!GA||!GA.cols||GA.cols.indexOf("nickname")<0||GA.cols.indexOf("image")<0)return SAMPLE.gallery;
+  var yes=/^(true|1|y|yes|是|✓|v)$/i,no=/^(false|0|n|no|否)$/i;
+  return GA.filter(function(g){return g.image&&g.nickname&&yes.test(g.approved||"")&&!no.test(g.consent||"")})
+    .map(function(g,i){g.slug=String(g.id||("r"+(i+1))).replace(/[^\w-]/g,"");return g});
+}
+function buildDB(W,AR,RE,SI,GA){
   if(!hasCols(W,["id","title","artist_id","image"])||!hasCols(AR,["artist_id","name"]))throw new Error("欄位不符");
   var site={};for(var k in SAMPLE.site)site[k]=SAMPLE.site[k];
   SI.forEach(function(r){if(r.key&&r.value)site[r.key]=r.value});
@@ -469,6 +845,7 @@ function buildDB(W,AR,RE,SI){
   return {site:site,
     artists:AR.filter(function(a){return a.artist_id&&a.name}),
     works:W.filter(function(w){return w.id&&w.title}).map(function(w){w.id=pad3(w.id);w.medium_type=w.medium_type||w.medium;return w}),
+    gallery:galFrom(GA),
     records:RE.filter(function(r){return r.image}).map(function(r,i){return {type:r.type==="活動"?"活動":"展場",image:r.image,caption:r.caption||"",order:parseFloat(r.order)||i+1}})};
 }
 function applyDB(next,fromCache){
@@ -477,9 +854,9 @@ function applyDB(next,fromCache){
 }
 function loadData(){
   try{var c=JSON.parse(localStorage.getItem(CFG.cacheKey)||"null");if(c&&c.data&&c.data.works){DB=c.data}}catch(e){}
-  return Promise.all([fetchTab("works"),fetchTab("artists"),fetchTab("records").catch(function(){return []}),fetchTab("site").catch(function(){return []})])
-   .then(function(a){var next=buildDB(a[0],a[1],a[2],a[3]);try{localStorage.setItem(CFG.cacheKey,JSON.stringify({t:Date.now(),data:next}))}catch(e){}applyDB(next)})
-   .catch(function(e){console.info("使用範例/快取資料:",e&&e.message)});
+  return Promise.all([fetchTab("works"),fetchTab("artists"),fetchTab("records").catch(function(){return []}),fetchTab("site").catch(function(){return []}),fetchTab("gallery").catch(function(){return []})])
+   .then(function(a){var next=buildDB(a[0],a[1],a[2],a[3],a[4]);STATUS={src:"試算表(即時)",msg:"works "+a[0].length+" 筆、artists "+a[1].length+" 筆、records "+a[2].length+" 筆、site "+a[3].length+" 列、gallery "+a[4].length+" 筆(含未核准)"};try{localStorage.setItem(CFG.cacheKey,JSON.stringify({t:Date.now(),data:next}))}catch(e){}applyDB(next)})
+   .catch(function(e){STATUS={src:"範例/快取資料",msg:"讀取試算表失敗:"+(e&&e.message)};console.info("使用範例/快取資料:",e&&e.message)}).then(function(){if(location.hash==="#status")route()});
 }
 
 buildTop();
