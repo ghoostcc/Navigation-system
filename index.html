@@ -450,15 +450,15 @@ svg{display:block}
 .p1 .dz .th{width:100%;height:auto}
 @media (max-width:340px){.p1{grid-template-columns:1fr}.p1 .r{border-left:0;padding-left:0}}
 /* 紙條:圖面排法(扭蛋 | 兩張紙條 | 票券紙條) */
-.p2{display:grid;grid-template-columns:15% minmax(0,1fr) minmax(0,1fr) 19%;grid-template-areas:"gm hd hd hd" "gm n1 n2 st" "bd bd bd bd";gap:10px 8px;align-items:start}
+.p2{display:grid;grid-template-columns:22% minmax(0,1fr);grid-template-areas:"gm hd" "n1 n1" "n2 n2" "bd bd";gap:10px 8px;align-items:start}
 .p2 .gm{grid-area:gm}.p2 .gm img{width:100%;height:auto;display:block}
 .p2 .hd2{grid-area:hd;display:block}
 .p2 .hd2 h2{font-size:clamp(1.05rem,4.6vw,1.5rem);margin-bottom:.3em}
 .p2 .hd2 p{font-size:.8rem}
 .p2 .n1{grid-area:n1}.p2 .n2{grid-area:n2}.p2 .st{grid-area:st;position:relative}.p2 .band{grid-area:bd}
-.note{padding:10px 9px 10px}
-.note h3{font-size:clamp(.72rem,3vw,1rem);margin-bottom:.3em;white-space:nowrap}
-.note p{font-size:.68rem!important;line-height:1.65!important;letter-spacing:.02em!important;text-wrap:pretty}
+.p2 .note{padding:14px 16px 14px;text-align:left}
+.p2 .note h3{font-size:clamp(.9rem,3.8vw,1.15rem);margin-bottom:.3em;white-space:nowrap}
+.p2 .note p{font-size:clamp(.74rem,3.2vw,.92rem)!important;line-height:1.8!important;letter-spacing:.04em!important;text-wrap:pretty}
 .note::before{left:-6px;top:6px;width:24px;height:9px}
 .note .qm{right:6px;top:-12px;font-size:1.8rem}
 .sc{position:relative;width:100%;padding:9px 8px 10px;background:linear-gradient(#f8efdd,#efe2c9);box-shadow:0 5px 10px rgba(40,50,70,.35);transform:rotate(3deg);margin-top:8px}
@@ -474,6 +474,10 @@ svg{display:block}
 .surp{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.05rem,4.6vw,1.5rem);letter-spacing:.08em;color:var(--ink);background:linear-gradient(#fdecd2,#f6d9ae);padding:.35em 1em;border-radius:22px 18px 22px 16px;background-clip:padding-box;box-shadow:0 3px 8px rgba(0,0,0,.35);white-space:nowrap}
 .surp svg{width:14px;height:14px;fill:var(--ink);transition:transform .2s}
 .surb[aria-expanded=true] .surp svg{transform:rotate(90deg)}
+.tkb{display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.tkb .tri{width:8px;height:8px;flex:0 0 auto;fill:currentColor;transition:transform .2s}
+.tkb.on .tri{transform:rotate(90deg)}
+.tkb.on::after{display:none}
 .surs{text-align:center;font-size:.85rem;letter-spacing:.14em;color:var(--text);opacity:.95;margin:0}
 .sv{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:0;align-items:center}
 .sv video{display:block;width:100%;height:auto;aspect-ratio:640/1008;border-radius:12px;background:#efe6d6;object-fit:cover}
@@ -755,14 +759,13 @@ function tkPanel(i){
     '<div class="hd2"><h2><span class="mk b" style="font-size:inherit">兩張關於你的紙條</span></h2><p>我們準備了扭蛋!<br>裡面有兩張關於「你」的紙條:</p></div>'+
     '<div class="note a n1"><span class="qm">?</span><h3>我之所以是我</h3><p>一個關於自我的哲學問題。沒有標準答案,只是想邀請你換個角度,想想自己。</p></div>'+
     '<div class="note c n2"><h3>這是你嗎?</h3><p>一張「疑似是你的證據」紙條。上面可能寫著你的某個小習慣、行為或生活片刻,看看它說得準不準吧!</p></div>'+
-    '<div class="st"><div class="sc" role="img" aria-label="票券上的紙條黏貼處"><i class="tape blue"></i><div class="sci"><i></i></div></div>'+arrowSvg().replace('<svg','<svg class="arr"')+'</div>'+
     '<div class="band">'+aImg('washi.png','')+'<p>怕你弄丟,我們已經在票券上幫你留好位置了,把抽到的兩張紙條貼上去吧!</p></div></div>','pn blue',21,2.4);
 }
 function tkHTML(){
   var N=['想畫就畫','一束送給自己的花','兩張關於你的紙條'],C=['y','y','b'];
   return '<div class="tkimg"><img src="'+A+'ticket.jpg" alt="票券展開圖" draggable="false">'+
     [0,1,2].map(function(i){return '<button type="button" class="hz z'+i+(TK_TAB===i?' on':'')+'" data-act="tk" data-i="'+i+'" aria-label="'+N[i]+'"></button>'}).join('')+'</div>'+
-    '<div class="tkb-row" role="tablist">'+N.map(function(n,i){return '<button type="button" role="tab" class="tkb '+C[i]+(TK_TAB===i?' on':'')+'" aria-selected="'+(TK_TAB===i)+'" data-act="tk" data-i="'+i+'">'+n+'</button>'}).join('')+'</div>'+tkPanel(TK_TAB);
+    '<div class="tkb-row" role="tablist">'+N.map(function(n,i){return '<button type="button" role="tab" class="tkb '+C[i]+(TK_TAB===i?' on':'')+'" aria-selected="'+(TK_TAB===i)+'" data-act="tk" data-i="'+i+'">'+n+'<svg class="tri" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1l9 6-9 6z"/></svg></button>'}).join('')+'</div>'+(TK_TAB>=0?tkPanel(TK_TAB):'');
 }
 function surHTML(){
   return '<button type="button" class="surb" data-act="sur" aria-expanded="'+TK_OPEN+'"><i class="hr"></i>'+aImg('block.png','')+'<span class="surp">未實現的驚喜<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1l9 6-9 6z"/></svg></span><i class="hr"></i></button>'+
@@ -799,7 +802,7 @@ function watchTorn(root){
   list.forEach(function(el){tornPx(el);if(tornRO)tornRO.observe(el)});
 }
 function aboutKey(r){return r==="about"?viewAbout():r==="about-concept"?viewConcept():r==="about-visual"?viewVisual():r==="about-ticket"?viewTicket():null}
-function viewStatus(){return '<div class="wrap page"><div class="about"><p class="a-h2">資料狀態</p><p class="a-p">來源:'+h(STATUS.src)+'<br>'+h(STATUS.msg)+'<br>目前顯示:作品 '+DB.works.length+' 件、創作者 '+DB.artists.length+' 位<br>展覽之後:'+(afterOpen()?'已開放':'尚未開放')+'(開放日 '+afterDate()+',台灣今天 '+todayTW()+')<br>about 開頭:'+h(String(DB.site.about).slice(0,30))+'</p></div></div>'}
+function viewStatus(){return '<div class="wrap page"><div class="about"><p class="a-h2">資料狀態</p><p class="a-p">來源:'+h(STATUS.src)+'<br>'+h(STATUS.msg)+'<br>目前顯示:作品 '+DB.works.length+' 件、創作者 '+DB.artists.length+' 位<br>展覽之後:'+(afterOpen()?'已開放':'尚未開放')+'(after_date 讀到:「'+h(String(DB.site.after_date||''))+'」→ '+(afterDate()||'未設定')+',台灣今天 '+todayTW()+')<br>about 開頭:'+h(String(DB.site.about).slice(0,30))+'</p></div></div>'}
 var recTab="展場";
 function recHTML(){
   var list=DB.records.filter(function(r){return r.type===recTab}).sort(function(a,b){return a.order-b.order});
@@ -881,7 +884,7 @@ document.addEventListener("click",function(e){
   else if(act==="zreset")zReset(true);
   else if(act==="egg")startEgg();
   else if(act==="vplay")playAboutVid();
-  else if(act==="tk"){TK_TAB=+b.getAttribute("data-i");var tw=document.getElementById("tkWrap");if(tw){tw.innerHTML=tkHTML();watchTorn(tw)}}
+  else if(act==="tk"){var ti=+b.getAttribute("data-i");TK_TAB=TK_TAB===ti?-1:ti;var tw=document.getElementById("tkWrap");if(tw){tw.innerHTML=tkHTML();watchTorn(tw)}}
   else if(act==="sur"){TK_OPEN=!TK_OPEN;var sw=document.getElementById("surWrap");if(sw){sw.innerHTML=surHTML();watchTorn(sw)}}
   else if(act==="mclose")closeModal();
   else if(act==="lbclose")closeLB();
@@ -961,9 +964,14 @@ window.addEventListener('resize',function(){if(lb.classList.contains('on'))zAppl
    之後 → 首頁出現「展覽之後」按鈕,輸入 000 只跳出提示。 */
 var pendingEgg=false;
 function todayTW(){return new Date(Date.now()+480*60000).toISOString().slice(0,10)}
-function afterDate(){var m=String(DB.site.after_date||'').match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
-  return m?m[1]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[3]).slice(-2):'2026-12-06'}
-function afterOpen(){return todayTW()>=afterDate()}
+function afterDate(){var v=String(DB.site.after_date==null?'':DB.site.after_date).trim();
+  if(!v)return '';
+  if(/^(on|yes|true|y|1|開|開放|是)$/i.test(v))return '0000-01-01';
+  var y=todayTW().slice(0,4),m=v.match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/),mm;
+  if(m)return m[1]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[3]).slice(-2);
+  mm=v.match(/(\d{1,2})\D+(\d{1,2})/);
+  return mm?y+'-'+('0'+mm[1]).slice(-2)+'-'+('0'+mm[2]).slice(-2):''}
+function afterOpen(){var d=afterDate();return !!d&&todayTW()>=d}
 var modal=document.getElementById('modal');
 function showModal(t,msg,links){
   modal.querySelector('.mb').innerHTML='<h2>'+h(t)+'</h2><p>'+h(msg)+'</p>'+
@@ -1039,7 +1047,7 @@ function viewAfter(){
 /* ---- 我也想參展:觀眾投稿表單 ---- */
 function viewJoin(){
   return '<div class="wrap page"><div class="join">'+
-   '<div class="note-w"><div class="note"><p class="n1">你可以現在畫,也可以帶回家,<br>等某一天想畫的時候再畫。</p><p class="n2">將你票券的「想畫就畫」空白畫布上的創作拍照上傳,<br>就能讓它成為這場展覽的一部分。</p></div><i class="tape y"></i><i class="tape b"></i></div>'+
+   '<div class="note-w"><div class="note"><p class="n1">你可以現在畫,也可以帶回家,<br>等某一天想畫的時候再畫。</p><p class="n2">將你票券的「想畫就畫」空白畫布上的創作拍照上傳,<br>就能讓它成為這場展覽的一部分。</p></div><i class="tape y"></i></div>'+
    '<div class="jcard-w"><form class="jcard" id="joinForm" novalidate>'+
    '<div class="upl-row">'+ticksSide(-1)+'<div class="upl"><input type="file" id="jFile" class="vh" accept="image/*"><label class="upl-in" id="jUpl" for="jFile"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg><span>上傳作品照片</span></label></div>'+ticksSide(1)+'</div>'+
    '<label class="fl" for="jNick">創作者暱稱 <b class="req">*</b></label><input type="text" id="jNick" maxlength="20" autocomplete="off">'+
