@@ -395,7 +395,8 @@ svg{display:block}
 .tk-h{display:flex;justify-content:center}
 .tkt .tc{padding:8px 28px 10px;background:linear-gradient(#fdecd9,#f6dcbf)}
 .tkt h1{margin:0;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.8rem);letter-spacing:.08em}
-.tk-p{text-align:center;font-size:.82rem;letter-spacing:.05em;line-height:2;color:var(--text)}
+.tk-p{text-align:center;font-size:clamp(.6rem,2.35vw,.92rem);letter-spacing:.01em;line-height:2.1;color:var(--text)}
+.tk-p span{display:block}
 .tk-hint{display:flex;justify-content:center;align-items:center;gap:6px;text-align:center;font-family:var(--font-brush);font-size:clamp(.88rem,3.7vw,1.25rem);letter-spacing:.06em;color:#f8d870;margin:-6px 0 0}
 .tk-hint svg{flex:0 0 auto;width:22px;height:20px;stroke:#f1e4d0}
 .tkimg{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.45);background:#efe9df}
@@ -421,38 +422,50 @@ svg{display:block}
 .p0{display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr);gap:0;align-items:center}
 .p0 .i{padding-right:14px}.p0 .i img{width:100%;height:auto;display:block}
 .p0 .t{border-left:1px solid rgba(43,31,23,.5);padding:2px 0 2px 16px}
-.p1{display:grid;gap:16px;grid-template-columns:1fr}
-.p1 .q{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(1.2rem,5.4vw,1.7rem);line-height:1.15;text-align:center;margin:.2em 0 .5em;letter-spacing:0}
-.p1 .tip b.k{display:inline-block;font-family:var(--font-brush);background:#f7d889;padding:0 .7em;border-radius:12px;margin-bottom:.4em;transform:rotate(-2deg)}
-.p1 .dz{display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr);gap:12px;align-items:center}
-.p1 .dz img{width:100%;height:auto}
-.p1 .flr{display:grid;grid-template-columns:minmax(0,92px) 1fr;gap:12px;align-items:center}
-.p1 .flr img{width:100%;height:auto}
-.p1 ul{margin:.2em 0 0;padding-left:1.1em;font-size:.9rem;letter-spacing:.08em;line-height:1.9}
-.p1 .tg{display:inline-block;font-family:var(--font-brush);font-weight:700;background:#fbd45e;padding:0 .7em;border-radius:12px;transform:rotate(-2deg)}
 .mag{width:clamp(86px,28vw,120px);aspect-ratio:1;border-radius:50%;border:2px solid #2b1f17;background:#efe9df url(assets/ticket.jpg) 51.3% 100%/800% auto no-repeat;box-shadow:0 2px 6px rgba(0,0,0,.3)}
-.dz .arr{width:100%;height:36px;stroke:#2b1f17;fill:none;stroke-width:2.2;stroke-linecap:round}
-.dz .th{width:100%}
-.p2{display:grid;gap:14px}
-.p2 .nt{display:grid;gap:12px;grid-template-columns:1fr}
 .note{position:relative;background:linear-gradient(#fdf4e4,#f6e6cc);padding:14px 16px 14px;box-shadow:0 3px 8px rgba(40,50,70,.3);color:var(--ink)}
 .note.a{transform:rotate(-1.4deg)}.note.c{transform:rotate(1.2deg)}
 .note::before{content:"";position:absolute;left:-8px;top:8px;width:30px;height:12px;background:rgba(214,196,160,.9);transform:rotate(-30deg)}
 .note h3{margin:0 0 .4em;font-family:var(--font-brush);font-size:1.15rem;letter-spacing:.06em;display:inline-block;border-bottom:2.5px solid #6fa6d9;line-height:1.5}
 .note p{font-size:.8rem!important;line-height:1.75!important;letter-spacing:.06em!important}
 .note .qm{position:absolute;right:10px;top:-14px;font-family:var(--font-brush);font-size:2.2rem;color:#f1b631;font-weight:700;transform:rotate(12deg)}
-.p2 .hd2{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:12px;align-items:center}
-.p2 .hd2>img{width:100%;height:auto}
-.p2 .fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;justify-items:center}
-.sc{position:relative;width:118px;padding:12px 12px 14px;background:linear-gradient(#f8efdd,#efe2c9);box-shadow:0 5px 12px rgba(40,50,70,.35);transform:rotate(3deg);margin:6px 0 4px}
-.sc .tape{width:54px;height:16px;top:-8px}
-.sci{position:relative;aspect-ratio:70/280;background:#e9e1d3 url(assets/ticket.jpg) 99.1% 62.2%/1520% auto no-repeat}
-.sci i{position:absolute;inset:3% 8%;border:2px dashed #2f7fd0;border-radius:6px}
-.p2 .fx>img{width:100%;height:auto;filter:drop-shadow(0 3px 5px rgba(0,0,0,.25))}
-.p2 .fx svg{width:44px;height:36px;stroke:#2b1f17;fill:none;stroke-width:2.2;stroke-linecap:round;justify-self:end}
 .band{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,transparent,rgba(255,246,228,.75) 12%,rgba(255,246,228,.75) 88%,transparent);padding:10px 14px;border-radius:12px}
 .band img{width:54px;height:auto;flex:0 0 auto}
-.band p{text-align:center;flex:1}
+.band p{text-align:center;flex:1;font-size:.78rem!important;text-wrap:balance}
+/* 花:兩欄 */
+.p1{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:14px;row-gap:12px}
+.p1 p{font-size:.78rem;letter-spacing:.02em;line-height:1.85;text-wrap:pretty}
+.p1 .r{border-left:1px solid rgba(43,31,23,.45);padding-left:12px}
+.p1 .a.l,.p1 .b.l{min-width:0}
+.p1 h2{font-size:clamp(.9rem,3.9vw,1.4rem);margin-bottom:.4em}
+.p1 .q{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(.95rem,4.2vw,1.45rem);line-height:1.15;text-align:center;margin:.1em 0 .5em}
+.p1 .tip b.k{display:inline-block;font-family:var(--font-brush);background:#f7d889;padding:0 .7em;border-radius:12px;margin-bottom:.3em;transform:rotate(-2deg)}
+.p1 .flr{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:6px;align-items:center}
+.p1 .flr img{width:100%;height:auto}
+.p1 ul{margin:.3em 0 0;padding-left:1.05em;font-size:.7rem;letter-spacing:.02em;line-height:1.8}
+.p1 .tg{display:inline-block;font-family:var(--font-brush);font-weight:700;font-size:.82rem;background:#fbd45e;padding:0 .7em;border-radius:12px;transform:rotate(-2deg)}
+.p1 .dz{display:grid;grid-template-columns:minmax(0,36%) minmax(0,14%) minmax(0,50%);gap:4px;align-items:center}
+.p1 .mag{width:100%}
+.p1 .dz .arr{width:100%;height:auto;stroke:#2b1f17;fill:none;stroke-width:2.2;stroke-linecap:round}
+.p1 .dz .th{width:100%;height:auto}
+@media (max-width:340px){.p1{grid-template-columns:1fr}.p1 .r{border-left:0;padding-left:0}}
+/* 紙條:圖面排法(扭蛋 | 兩張紙條 | 票券紙條) */
+.p2{display:grid;grid-template-columns:15% minmax(0,1fr) minmax(0,1fr) 19%;grid-template-areas:"gm hd hd hd" "gm n1 n2 st" "bd bd bd bd";gap:10px 8px;align-items:start}
+.p2 .gm{grid-area:gm}.p2 .gm img{width:100%;height:auto;display:block}
+.p2 .hd2{grid-area:hd;display:block}
+.p2 .hd2 h2{font-size:clamp(1.05rem,4.6vw,1.5rem);margin-bottom:.3em}
+.p2 .hd2 p{font-size:.8rem}
+.p2 .n1{grid-area:n1}.p2 .n2{grid-area:n2}.p2 .st{grid-area:st;position:relative}.p2 .band{grid-area:bd}
+.note{padding:10px 9px 10px}
+.note h3{font-size:clamp(.72rem,3vw,1rem);margin-bottom:.3em;white-space:nowrap}
+.note p{font-size:.68rem!important;line-height:1.65!important;letter-spacing:.02em!important;text-wrap:pretty}
+.note::before{left:-6px;top:6px;width:24px;height:9px}
+.note .qm{right:6px;top:-12px;font-size:1.8rem}
+.sc{position:relative;width:100%;padding:9px 8px 10px;background:linear-gradient(#f8efdd,#efe2c9);box-shadow:0 5px 10px rgba(40,50,70,.35);transform:rotate(3deg);margin-top:8px}
+.sc .tape{width:70%;height:12px;top:-7px}
+.sci{position:relative;aspect-ratio:70/200;background:#e9e1d3 url(assets/ticket.jpg) 99.1% 47.6%/1520% auto no-repeat}
+.sci i{position:absolute;inset:3% 8%;border:2px dashed #2f7fd0;border-radius:5px}
+.p2 .st .arr{position:absolute;left:-22px;bottom:-4px;width:26px;height:auto;stroke:#2b1f17;fill:none;stroke-width:2.4;stroke-linecap:round}
 /* 未實現的驚喜 */
 .sur{display:grid;gap:8px;margin-top:14px}
 .surb{display:flex;align-items:center;gap:8px;width:100%;padding:0}
@@ -470,10 +483,6 @@ svg{display:block}
 @media (min-width:640px){
   .cn-a p,.bel p,.strow>p{font-size:1rem}
   .abc .tc{min-height:160px}
-  .p1{grid-template-columns:1fr 1fr;column-gap:22px}
-  .p1 .c2{border-left:1px solid rgba(43,31,23,.45);padding-left:22px}
-  .p2 .nt{grid-template-columns:1fr 1fr}
-  .p2 .fx{grid-template-columns:minmax(0,1fr) auto;justify-items:stretch;align-items:center}
   .vs1 .tc{min-height:480px}
 }
 </style>
@@ -735,16 +744,19 @@ function arrowSvg(){return '<svg viewBox="0 0 60 36" aria-hidden="true"><path d=
 function tkPanel(i){
   if(i===0)return TC('<div class="p0"><div class="i">'+aImg('frameico.png','')+'</div><div class="t"><h2><span class="mk" style="font-size:inherit">想畫就畫</span></h2>'+
     '<p>就像標題說的,想畫就畫!<br>不論是在展覽現場,還是未來的某一天,當你對這片空白有了想法,都可以拿起筆,留下些什麼。<br>塗鴉也好、寫字也好、畫畫也好。沒有指定主題,也沒有一定要完成的時間。</p><p><b>這片空白,交給你。</b></p></div></div>','pn',17,3.2);
-  if(i===1)return TC('<div class="p1"><div class="c1"><h2><span class="mk" style="font-size:inherit">一束送給自己的花</span></h2><div class="q">YOU DESERVE<br>A BOUQUET</div>'+
-    '<p>我們一直很喜歡這句話。<br>不論性別、年紀,無論你是誰,<br>收到花都可以是一件令人開心的事。<br>所以,我們先送你一朵雛菊。</p>'+
-    '<p class="tip"><b class="k">小巧思!</b><br>仔細看看花束下方,<br>有一個虛線畫成的大拇指。<br>試著把你的手放上去,<br>就像是親手拿著這束花一樣!</p></div>'+
-    '<div class="c2"><div class="flr">'+aImg('daisy.png','雛菊')+'<div><span class="tg">雛菊的花語</span><ul><li>純潔與天真</li><li>希望與新的開始</li><li>和平與快樂</li></ul></div></div>'+
-    '<p style="margin-top:.8em">你喜歡哪一個,就是我們<br>送給你的涵義!<br>還喜歡什麼花呢?<br>有機會的話,也為自己準備一束吧!</p>'+
-    '<div class="dz" style="margin-top:14px"><div class="mag" role="img" aria-label="花束下方的虛線大拇指放大圖"></div><div style="display:grid;grid-template-columns:44px 1fr;align-items:center;gap:4px">'+arrowSvg().replace('<svg','<svg class="arr"')+aImg('thumb.png','','th')+'</div></div></div></div>','pn',19,3.2);
-  return TC('<div class="p2"><div class="hd2">'+aImg('gum.png','')+'<div><h2><span class="mk b" style="font-size:inherit">兩張關於你的紙條</span></h2><p>我們準備了扭蛋!<br>裡面有兩張關於「你」的紙條:</p></div></div>'+
-    '<div class="nt"><div class="note a"><span class="qm">?</span><h3>我之所以是我</h3><p>一個關於自我的哲學問題。<br>沒有標準答案,<br>只是想邀請你<br>換個角度,想想自己。</p></div>'+
-    '<div class="note c"><h3>這是你嗎?</h3><p>一張「疑似是你的證據」紙條。<br>上面可能寫著你的某個小習慣、行為或生活片刻,<br>看看它說得準不準吧!</p></div></div>'+
-    '<div class="fx"><div class="band">'+aImg('washi.png','')+'<p>怕你弄丟,我們已經在票券上幫你留好位置了,<br>把抽到的兩張紙條貼上去吧!</p></div>'+'<div class="sc" role="img" aria-label="票券上的紙條黏貼處"><i class="tape blue"></i><div class="sci"><i></i></div></div></div></div>','pn blue',21,3.2);
+  if(i===1)return TC('<div class="p1">'+
+    '<div class="a l"><h2><span class="mk" style="font-size:inherit">一束送給自己的花</span></h2><div class="q">YOU DESERVE<br>A BOUQUET</div>'+
+    '<p>我們一直很喜歡這句話。不論性別、年紀,無論你是誰,收到花都可以是一件令人開心的事。所以,我們先送你一朵雛菊。</p></div>'+
+    '<div class="a r"><div class="flr">'+aImg('daisy.png','雛菊')+'<div><span class="tg">雛菊的花語</span><ul><li>純潔與天真</li><li>希望與新的開始</li><li>和平與快樂</li></ul></div></div>'+
+    '<p style="margin-top:.7em">你喜歡哪一個,就是我們送給你的涵義!還喜歡什麼花呢?有機會的話,也為自己準備一束吧!</p></div>'+
+    '<div class="b l"><p class="tip"><b class="k">小巧思!</b><br>仔細看看花束下方,有一個虛線畫成的大拇指。試著把你的手放上去,就像是親手拿著這束花一樣!</p></div>'+
+    '<div class="b r dz"><div class="mag" role="img" aria-label="花束下方的虛線大拇指放大圖"></div>'+arrowSvg().replace('<svg','<svg class="arr"')+aImg('thumb.png','','th')+'</div></div>','pn',19,2.4);
+  return TC('<div class="p2"><div class="gm">'+aImg('gum.png','')+'</div>'+
+    '<div class="hd2"><h2><span class="mk b" style="font-size:inherit">兩張關於你的紙條</span></h2><p>我們準備了扭蛋!<br>裡面有兩張關於「你」的紙條:</p></div>'+
+    '<div class="note a n1"><span class="qm">?</span><h3>我之所以是我</h3><p>一個關於自我的哲學問題。沒有標準答案,只是想邀請你換個角度,想想自己。</p></div>'+
+    '<div class="note c n2"><h3>這是你嗎?</h3><p>一張「疑似是你的證據」紙條。上面可能寫著你的某個小習慣、行為或生活片刻,看看它說得準不準吧!</p></div>'+
+    '<div class="st"><div class="sc" role="img" aria-label="票券上的紙條黏貼處"><i class="tape blue"></i><div class="sci"><i></i></div></div>'+arrowSvg().replace('<svg','<svg class="arr"')+'</div>'+
+    '<div class="band">'+aImg('washi.png','')+'<p>怕你弄丟,我們已經在票券上幫你留好位置了,把抽到的兩張紙條貼上去吧!</p></div></div>','pn blue',21,2.4);
 }
 function tkHTML(){
   var N=['想畫就畫','一束送給自己的花','兩張關於你的紙條'],C=['y','y','b'];
@@ -760,7 +772,7 @@ function viewTicket(){
   var ar='<svg viewBox="0 0 30 26" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 4c6 8 12 12 22 12M18 11l8 5-9 5"/></svg>';
   return abWrap('tk',backLink('#about')+
     '<div class="tk-h">'+TC('<h1>不只是一張入場券</h1>','tkt',2,2.2)+'</div>'+
-    '<p class="tk-p">在電卡索,我們一直希望票券不只是活動結束後,被收起來的一張紙。<br>所以每次設計票券時,我們都會試著留下一些可以參與、可以改變的空間。<br>讓大家在活動中留下自己的痕跡,也讓當下的想法與感受,在活動結束後仍能繼續延伸。</p>'+
+    '<p class="tk-p"><span>在電卡索,我們一直希望票券不只是活動結束後,被收起來的一張紙。</span><span>所以每次設計票券時,我們都會試著留下一些可以參與、可以改變的空間。</span><span>讓大家在活動中留下自己的痕跡,也讓當下的想法與感受,在活動結束後仍能繼續延伸。</span></p>'+
     '<p class="tk-hint">'+ar+'<span>點點票券,看看我們藏了什麼小巧思!</span>'+ar.replace('<svg','<svg style="transform:scaleX(-1)"')+'</p>'+
     '<div id="tkWrap" style="display:grid;gap:14px">'+tkHTML()+'</div><div class="sur" id="surWrap">'+surHTML()+'</div>');
 }
@@ -769,15 +781,16 @@ function viewTicket(){
 var tornRO=null;
 function tornPx(el){
   var w=el.offsetWidth,hh=el.offsetHeight;if(w<24||hh<24)return;
-  var seed=+el.getAttribute('data-ts')||7,amp=+(el.getAttribute('data-amp')||3),step=10,s=(seed*7919)%233280||1;
+  var seed=+el.getAttribute('data-ts')||7,amp=+(el.getAttribute('data-amp')||2.4),s=(seed*7919)%233280||1;
   var r=function(){s=(s*9301+49297)%233280;return s/233280};
-  function edge(len){var n=Math.max(4,Math.round(len/step)),a=[],o=[],i;for(i=0;i<=n;i++)a.push(r());
-    for(i=0;i<=n;i++){var v=(a[Math.max(0,i-1)]+2*a[i]+a[Math.min(n,i+1)])/4;o.push([i/n*len,Math.pow(v,1.25)*amp+(r()<.1?r()*amp*.8:0)])}return o}
-  var t=edge(w),rt=edge(hh),b=edge(w),lf=edge(hh),p=[],i;
-  t.forEach(function(q){p.push(q[0].toFixed(1)+'px '+q[1].toFixed(1)+'px')});
-  for(i=1;i<rt.length;i++)p.push((w-rt[i][1]).toFixed(1)+'px '+rt[i][0].toFixed(1)+'px');
-  for(i=b.length-2;i>=0;i--)p.push(b[i][0].toFixed(1)+'px '+(hh-b[i][1]).toFixed(1)+'px');
-  for(i=lf.length-2;i>0;i--)p.push(lf[i][1].toFixed(1)+'px '+lf[i][0].toFixed(1)+'px');
+  var R=Math.min(26,Math.min(w,hh)*.42),pts=[];
+  function line(x0,y0,x1,y1,nx,ny){var len=Math.hypot(x1-x0,y1-y0),n=Math.max(1,Math.round(len/7));for(var i=0;i<n;i++){var t=i/n;pts.push([x0+(x1-x0)*t,y0+(y1-y0)*t,nx,ny])}}
+  function arc(cx,cy,a0,a1){var n=Math.max(3,Math.round(R*Math.PI/2/6));for(var i=0;i<n;i++){var a=a0+(a1-a0)*i/n;pts.push([cx+R*Math.cos(a),cy+R*Math.sin(a),-Math.cos(a),-Math.sin(a)])}}
+  line(R,0,w-R,0,0,1);arc(w-R,R,-Math.PI/2,0);line(w,R,w,hh-R,-1,0);arc(w-R,hh-R,0,Math.PI/2);
+  line(w-R,hh,R,hh,0,-1);arc(R,hh-R,Math.PI/2,Math.PI);line(0,hh-R,0,R,1,0);arc(R,R,Math.PI,Math.PI*1.5);
+  var n=pts.length,a=[],i;for(i=0;i<n;i++)a.push(r());
+  var p=pts.map(function(q,k){var v=(a[(k+n-1)%n]+2*a[k]+a[(k+1)%n])/4,d=Math.pow(v,1.3)*amp+(a[k]>.93?r()*amp*.7:0);
+    return (q[0]+q[2]*d).toFixed(1)+'px '+(q[1]+q[3]*d).toFixed(1)+'px'});
   el.style.clipPath='polygon('+p.join(',')+')';
 }
 function watchTorn(root){
