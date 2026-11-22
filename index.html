@@ -301,6 +301,181 @@ svg{display:block}
 .gempty{position:absolute;left:0;right:0;top:30%;text-align:center;color:var(--muted);letter-spacing:.14em;z-index:2}
 .titlerow.nb{grid-template-columns:minmax(0,1fr)}
 .titlerow.nb h1,.titlerow.nb .by{grid-column:1}
+/* ===== 關於展覽(首頁 + 三個子頁)===== */
+.ab{max-width:720px;margin-inline:auto;display:grid;gap:24px;font-family:var(--font-body);color:var(--text)}
+.ab .back{justify-self:start;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-brush);font-size:1.05rem;letter-spacing:.1em}
+.tcw{position:relative;filter:drop-shadow(0 5px 8px rgba(0,0,0,.4))}
+.tc{position:relative;background:linear-gradient(#fcebd8,#f5ddc3);color:var(--ink);padding:22px 20px}
+.tc p{margin:0}
+.tape{position:absolute;top:-13px;left:50%;width:92px;height:26px;transform:translateX(-50%) rotate(-3deg);background:linear-gradient(rgba(244,206,120,.88),rgba(234,190,98,.88));box-shadow:0 2px 4px rgba(0,0,0,.25);z-index:3;pointer-events:none}
+.tape.blue{background:linear-gradient(rgba(150,190,230,.9),rgba(120,165,214,.9))}
+.mk{display:inline-block;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.45rem,6vw,1.9rem);letter-spacing:.06em;line-height:1.3;padding:0 .4em;background:linear-gradient(transparent 40%,#fbd45e 40% 90%,transparent 90%);transform:rotate(-1.5deg)}
+.mk.b{background:linear-gradient(transparent 40%,#a9cbe9 40% 90%,transparent 90%)}
+.ul{background:linear-gradient(transparent 80%,#f6cd4c 80% 92%,transparent 92%);padding-bottom:1px}
+.mkrow{display:flex;align-items:center;gap:6px;margin-bottom:12px;color:var(--ink)}
+.mkrow .ticks{width:34px;height:34px;color:#e4a82b;margin-top:-10px}
+/* 關於首頁 */
+.ab-h{display:flex;justify-content:center;align-items:flex-start;gap:6px;margin:4px 0 6px}
+.ab-h .ticks{color:#f0b94a;margin-top:6px}
+.ab-ht .tc{padding:10px 34px 12px;background:linear-gradient(#fdecd9,#f6dec5)}
+.ab-ht h1{margin:0;font-family:var(--font-brush);font-weight:400;font-size:clamp(2rem,9vw,2.8rem);letter-spacing:.14em;line-height:1.3}
+.abc{display:block}
+.abc .tc{display:grid;grid-template-columns:auto minmax(0,1fr) 40px;align-items:center;gap:6px;min-height:132px;padding:14px 16px 14px 22px}
+.abt{font-family:var(--font-brush);font-weight:700;font-size:clamp(1.05rem,4.6vw,1.6rem);letter-spacing:.06em;white-space:nowrap;position:relative;padding-bottom:10px}
+.abt .n{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;margin-right:.1em}
+.abt i{font-style:normal;margin:0 .35em;font-weight:400}
+.abt::after{content:"";position:absolute;left:-4px;right:-6px;bottom:0;height:7px;border-radius:6px;background:var(--c);opacity:.85;transform:rotate(-.7deg)}
+.abi img{display:block;width:100%;max-height:130px;object-fit:contain;object-position:right center}
+.chv svg{width:38px;height:38px;color:var(--ink)}
+/* 展覽理念 */
+.cn-a .row2{display:grid;grid-template-columns:1.12fr .88fr;gap:12px;align-items:center}
+.cn-a .row2+.row2{margin-top:14px;grid-template-columns:.9fr 1.1fr}
+.cn-a p,.bel p{font-size:.84rem;letter-spacing:.05em;line-height:1.95}
+.pic{display:block;width:100%;height:auto}
+.bubs{display:grid;gap:10px;justify-items:start}
+.bub{position:relative;font-family:var(--font-brush);font-size:.86rem;letter-spacing:.03em;line-height:1.5;border:2px solid #6a4b33;border-radius:24px / 20px;padding:.45em 1em;background:rgba(255,249,238,.55);color:var(--ink)}
+.bub::before,.bub::after{content:"";position:absolute;border:solid transparent}
+.bub::before{left:-14px;bottom:9px;border-width:7px 14px 7px 0;border-right-color:#6a4b33}
+.bub::after{left:-10px;bottom:10.5px;border-width:5.5px 11px 5.5px 0;border-right-color:#f9efe0}
+.bub.s{margin-left:1.2em}.bub.s::before,.bub.s::after{display:none}
+.bel{margin-top:2px}
+.bel .tc{padding:22px 20px 24px}
+.bel h2{margin:.5em 0 .35em;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.12rem,4.9vw,1.6rem);letter-spacing:.06em;line-height:1.5}
+.bel .bt{display:block;margin-top:.5em}
+.bel .fl{position:absolute;right:8px;bottom:6px;width:clamp(70px,24%,120px);height:auto;pointer-events:none}
+.bel p{padding-right:clamp(40px,22%,110px)}
+/* 影片 */
+.vid{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#1d1511 center/cover no-repeat}
+.vid iframe,.vid video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.vplay{position:absolute;inset:0;display:grid;place-items:center;background:none;border:0;cursor:pointer}
+.vplay span{width:68px;height:68px;border-radius:50%;background:rgba(48,34,26,.72);display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.vplay svg{margin-left:4px}
+.vwrap{position:relative;padding-top:10px}
+.vwrap .tagw{position:absolute;left:-4px;top:-8px;z-index:4;transform:rotate(-2deg)}
+.vwrap .tagw .tc{padding:8px 26px 10px;background:linear-gradient(#fdf1de,#f7e2bf)}
+.vfr .tc{padding:16px;background:linear-gradient(#fffaf1,#f7ecda)}
+.strow{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:0;align-items:center}
+.strow>img{width:100%;height:auto;padding-right:14px}
+.strow>p,.strow>.bubs{border-left:1px solid rgba(243,230,214,.5);padding:6px 0 6px 16px;font-size:.86rem;letter-spacing:.06em;line-height:1.9;margin:0}
+.strow mark{background:#f6cf55;color:#2b1f17;padding:0 .2em;border-radius:4px}
+.strow .bub{background:#fbe6b3;border:0;color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.25);font-size:.82rem}
+.strow .bub::before{display:none}
+.strow .bub::after{left:-9px;bottom:10px;border-width:6px 10px 6px 0;border-right-color:#fbe6b3}
+.strow .bub.s::after{display:none}
+.bel .clip{position:absolute;left:-8px;top:-18px;width:34px;height:auto;z-index:4;transform:rotate(-12deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+.bel.af .tc{padding-top:26px}
+.bel.af .hl2{display:block;margin:.2em 0 .5em;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.1rem,4.8vw,1.6rem);letter-spacing:.04em;line-height:1.6}
+.bel.af .hl2 span{background:linear-gradient(transparent 45%,#fbd45e 45% 92%,transparent 92%);padding:0 .3em}
+.bel.af hr{border:0;border-top:1px solid rgba(43,31,23,.45);margin:10px 0 12px}
+/* 主視覺設計 */
+.vs1{position:relative}
+.vs1 .tc{padding:26px 20px 28px;padding-right:clamp(150px,46%,330px);min-height:330px}
+.vtt{margin:0 0 18px;font-family:var(--font-brush);font-weight:700;font-size:clamp(1rem,4.3vw,1.7rem);letter-spacing:.04em;line-height:1.8;display:grid;justify-items:start}
+.vtt span{white-space:nowrap;background:linear-gradient(transparent 40%,#fbd45e 40% 92%,transparent 92%);padding:0 .3em}
+.vs1 p{font-size:.82rem;letter-spacing:.04em;line-height:1.9;margin-bottom:14px}
+.poster{position:absolute;right:-4px;top:-14px;width:clamp(138px,42%,300px);transform:rotate(3.2deg);box-shadow:0 8px 18px rgba(0,0,0,.45);background:#efe4cf;z-index:2}
+.poster img{display:block;width:100%;height:auto}
+.poster .tape{width:60px;height:18px;top:-9px}
+.ab hr.dash{border:0;border-top:1px solid rgba(243,230,214,.4);margin:2px 0}
+.era .tc{padding:18px 12px 16px}
+.era.p .tc{background:linear-gradient(#fbe6bf,#f5d49c)}
+.era.n .tc{background:linear-gradient(#e6eff8,#cfe1f1)}
+.era .eh{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.era .etag{flex:0 0 auto;font-family:var(--font-brush);font-weight:700;text-align:center;line-height:1.15;padding:10px 16px 8px;border-radius:46% 54% 50% 50% / 55% 50% 50% 45%;transform:rotate(-5deg);margin:-26px 0 0 -18px;box-shadow:0 2px 5px rgba(0,0,0,.2)}
+.era.p .etag{background:#f9d38a}.era.n .etag{background:#b6cde3}
+.era .etag b{display:block;font-size:1.5rem;letter-spacing:.1em}.era .etag small{font-size:.8rem}
+.era .eh p{font-size:.82rem;letter-spacing:.05em;line-height:1.7}
+.era .ic{display:grid;grid-template-columns:repeat(4,1fr)}
+.era .ic div{text-align:center;padding:2px 4px;border-left:1px solid rgba(60,40,20,.28);display:grid;justify-items:center;align-content:start;gap:2px}
+.era .ic div:first-child{border-left:0}
+.era .ic img{height:clamp(46px,13vw,76px);width:auto;max-width:100%;object-fit:contain;margin-bottom:4px}
+.era .ic b{font-size:.92rem;letter-spacing:.06em}
+.era .ic small{font-size:.7rem;letter-spacing:.04em;line-height:1.5;color:#4d3a2a}
+/* 票券設計 */
+.tk-h{display:flex;justify-content:center}
+.tkt .tc{padding:8px 28px 10px;background:linear-gradient(#fdecd9,#f6dcbf)}
+.tkt h1{margin:0;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.8rem);letter-spacing:.08em}
+.tk-p{text-align:center;font-size:.82rem;letter-spacing:.05em;line-height:2;color:var(--text)}
+.tk-hint{display:flex;justify-content:center;align-items:center;gap:6px;text-align:center;font-family:var(--font-brush);font-size:clamp(.88rem,3.7vw,1.25rem);letter-spacing:.06em;color:#f8d870;margin:-6px 0 0}
+.tk-hint svg{flex:0 0 auto;width:22px;height:20px;stroke:#f1e4d0}
+.tkimg{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.45);background:#efe9df}
+.tkimg>img{display:block;width:100%;height:auto}
+.hz{position:absolute;display:block;border:2px dashed transparent;border-radius:6px;cursor:pointer;background:none;padding:0}
+.hz.on{border-color:#2f7fd0;background:rgba(47,127,208,.07);animation:pulse 1.6s ease-in-out infinite}
+.hz.z0{left:3.4%;top:30%;width:26.6%;height:66%}
+.hz.z1{left:38%;top:74%;width:26%;height:30%;border-radius:50%}
+.hz.z2{left:94.2%;top:12%;width:4.6%;height:85%}
+@keyframes pulse{50%{box-shadow:0 0 0 4px rgba(47,127,208,.22)}}
+.tkb-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:-6px;position:relative;z-index:2}
+.tkb{position:relative;font-family:var(--font-brush);font-weight:700;font-size:clamp(.82rem,3.5vw,1.2rem);letter-spacing:.04em;white-space:nowrap;padding:12px 4px 11px;color:var(--ink);background:linear-gradient(#fbe8d3,#f4d9bd);border-radius:18px 14px 17px 15px;box-shadow:0 3px 6px rgba(0,0,0,.35)}
+.tkb.on.y{background:linear-gradient(#fde9a4,#f9d66a);outline:2.5px solid #f1b631;outline-offset:-3px}
+.tkb.on.b{background:linear-gradient(#d8e8f6,#b8d3ec);outline:2.5px solid #6fa6d9;outline-offset:-3px}
+.tkb.on::after{content:"";position:absolute;left:50%;bottom:-12px;margin-left:-11px;border:11px solid transparent;border-bottom:0;border-top-color:#f6d56e}
+.tkb.on.b::after{border-top-color:#b8d3ec}
+.pn .tc{padding:26px 18px 22px;margin-top:8px}
+.pn.blue .tc{background:linear-gradient(#e3edf7,#cfe0f0)}
+.pn h2{margin:0 0 .6em;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.3rem,5.4vw,1.7rem);letter-spacing:.06em;display:inline-block;transform:rotate(-1deg)}
+.pn p{font-size:.84rem;letter-spacing:.05em;line-height:1.9}
+.pn p+p{margin-top:.6em}
+.pn p b{font-weight:700;background:linear-gradient(transparent 55%,#fbd45e 55%)}
+.p0{display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr);gap:0;align-items:center}
+.p0 .i{padding-right:14px}.p0 .i img{width:100%;height:auto;display:block}
+.p0 .t{border-left:1px solid rgba(43,31,23,.5);padding:2px 0 2px 16px}
+.p1{display:grid;gap:16px;grid-template-columns:1fr}
+.p1 .q{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(1.2rem,5.4vw,1.7rem);line-height:1.15;text-align:center;margin:.2em 0 .5em;letter-spacing:0}
+.p1 .tip b.k{display:inline-block;font-family:var(--font-brush);background:#f7d889;padding:0 .7em;border-radius:12px;margin-bottom:.4em;transform:rotate(-2deg)}
+.p1 .dz{display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr);gap:12px;align-items:center}
+.p1 .dz img{width:100%;height:auto}
+.p1 .flr{display:grid;grid-template-columns:minmax(0,92px) 1fr;gap:12px;align-items:center}
+.p1 .flr img{width:100%;height:auto}
+.p1 ul{margin:.2em 0 0;padding-left:1.1em;font-size:.9rem;letter-spacing:.08em;line-height:1.9}
+.p1 .tg{display:inline-block;font-family:var(--font-brush);font-weight:700;background:#fbd45e;padding:0 .7em;border-radius:12px;transform:rotate(-2deg)}
+.mag{width:clamp(86px,28vw,120px);aspect-ratio:1;border-radius:50%;border:2px solid #2b1f17;background:#efe9df url(assets/ticket.jpg) 51.3% 100%/800% auto no-repeat;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.dz .arr{width:100%;height:36px;stroke:#2b1f17;fill:none;stroke-width:2.2;stroke-linecap:round}
+.dz .th{width:100%}
+.p2{display:grid;gap:14px}
+.p2 .nt{display:grid;gap:12px;grid-template-columns:1fr}
+.note{position:relative;background:linear-gradient(#fdf4e4,#f6e6cc);padding:14px 16px 14px;box-shadow:0 3px 8px rgba(40,50,70,.3);color:var(--ink)}
+.note.a{transform:rotate(-1.4deg)}.note.c{transform:rotate(1.2deg)}
+.note::before{content:"";position:absolute;left:-8px;top:8px;width:30px;height:12px;background:rgba(214,196,160,.9);transform:rotate(-30deg)}
+.note h3{margin:0 0 .4em;font-family:var(--font-brush);font-size:1.15rem;letter-spacing:.06em;display:inline-block;border-bottom:2.5px solid #6fa6d9;line-height:1.5}
+.note p{font-size:.8rem!important;line-height:1.75!important;letter-spacing:.06em!important}
+.note .qm{position:absolute;right:10px;top:-14px;font-family:var(--font-brush);font-size:2.2rem;color:#f1b631;font-weight:700;transform:rotate(12deg)}
+.p2 .hd2{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:12px;align-items:center}
+.p2 .hd2>img{width:100%;height:auto}
+.p2 .fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;justify-items:center}
+.sc{position:relative;width:118px;padding:12px 12px 14px;background:linear-gradient(#f8efdd,#efe2c9);box-shadow:0 5px 12px rgba(40,50,70,.35);transform:rotate(3deg);margin:6px 0 4px}
+.sc .tape{width:54px;height:16px;top:-8px}
+.sci{position:relative;aspect-ratio:70/280;background:#e9e1d3 url(assets/ticket.jpg) 99.1% 62.2%/1520% auto no-repeat}
+.sci i{position:absolute;inset:3% 8%;border:2px dashed #2f7fd0;border-radius:6px}
+.p2 .fx>img{width:100%;height:auto;filter:drop-shadow(0 3px 5px rgba(0,0,0,.25))}
+.p2 .fx svg{width:44px;height:36px;stroke:#2b1f17;fill:none;stroke-width:2.2;stroke-linecap:round;justify-self:end}
+.band{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,transparent,rgba(255,246,228,.75) 12%,rgba(255,246,228,.75) 88%,transparent);padding:10px 14px;border-radius:12px}
+.band img{width:54px;height:auto;flex:0 0 auto}
+.band p{text-align:center;flex:1}
+/* 未實現的驚喜 */
+.sur{display:grid;gap:8px;margin-top:14px}
+.surb{display:flex;align-items:center;gap:8px;width:100%;padding:0}
+.surb .hr{flex:1;border-top:1px solid rgba(243,230,214,.45)}
+.surb>img{width:clamp(54px,17vw,78px);height:auto;flex:0 0 auto;filter:drop-shadow(0 0 10px rgba(246,196,70,.5))}
+.surp{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.05rem,4.6vw,1.5rem);letter-spacing:.08em;color:var(--ink);background:linear-gradient(#fdecd2,#f6d9ae);padding:.35em 1em;border-radius:22px 18px 22px 16px;background-clip:padding-box;box-shadow:0 3px 8px rgba(0,0,0,.35);white-space:nowrap}
+.surp svg{width:14px;height:14px;fill:var(--ink);transition:transform .2s}
+.surb[aria-expanded=true] .surp svg{transform:rotate(90deg)}
+.surs{text-align:center;font-size:.85rem;letter-spacing:.14em;color:var(--text);opacity:.95;margin:0}
+.sv{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:0;align-items:center}
+.sv video{display:block;width:100%;height:auto;aspect-ratio:640/1008;border-radius:12px;background:#efe6d6;object-fit:cover}
+.sv .t{border-left:1px solid rgba(43,31,23,.5);padding:2px 0 2px 16px;margin-left:14px}
+.sh{margin:0 0 12px!important;text-align:center;font-family:var(--font-brush);font-weight:700;font-size:clamp(1.1rem,5vw,1.6rem)!important;letter-spacing:.06em!important;line-height:1.5!important}
+.sh span{background:linear-gradient(transparent 50%,#fbd45e 50% 92%,transparent 92%);padding:0 .3em}
+@media (min-width:640px){
+  .cn-a p,.bel p,.strow>p{font-size:1rem}
+  .abc .tc{min-height:160px}
+  .p1{grid-template-columns:1fr 1fr;column-gap:22px}
+  .p1 .c2{border-left:1px solid rgba(43,31,23,.45);padding-left:22px}
+  .p2 .nt{grid-template-columns:1fr 1fr}
+  .p2 .fx{grid-template-columns:minmax(0,1fr) auto;justify-items:stretch;align-items:center}
+  .vs1 .tc{min-height:480px}
+}
 </style>
 
 <div id="top"></div>
@@ -320,7 +495,7 @@ var SAMPLE = {
     title: "我之所以是我", subtitle: "藝術聯展",
     about: "「我之所以是我」是一場關於自我、經驗與創作的聯合展覽。\n21 位創作者以各自的視角與媒材,分享那些形塑自我的片段、感受與思考,邀請觀眾一同探索每一個獨特的「我」。",
     about_image: "about.jpg", total_artists: 21,
-    after_date: "2026-12-06", after_title: "展覽之後", after_text: "這場由我們開始的展覽,\n讓更多人的故事加入。", join_url: "", egg_video: "egg.mp4"
+    after_date: "2026-12-06", after_title: "展覽之後", after_text: "這場由我們開始的展覽,\n讓更多人的故事加入。", join_url: "", egg_video: "https://www.youtube.com/watch?v=9yXFpNHcvdk"
   },
   artists: [
     { artist_id: "a01", name: "林育真", instagram: "https://instagram.com/", website: "https://example.com" },
@@ -482,9 +657,135 @@ function aboutHTML(t){
     if(m){cls=m[1].length===1?"a-h1":"a-h2";txt=m[2]}else if(!marked&&first){cls="a-h1"}
     first=false;out+='<p class="'+cls+'">'+h(txt)+'</p>'});
   return out}
+/* ===== 關於展覽(首頁 + 三個子頁:展覽理念 / 主視覺設計 / 票券設計)=====
+   文字都在這一區,直接改雙引號裡的字即可。 */
+var YTRE=/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/;
+function chev(){return '<svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="19" cy="19" r="16"/><path d="M16 12l8 7-8 7"/></svg>'}
+function TC(inner,cls,seed,amp,out){return '<div class="tcw '+(cls||'')+'"><div class="tc" data-ts="'+(seed||7)+'"'+(amp?' data-amp="'+amp+'"':'')+'>'+inner+'</div>'+(out||'')+'</div>'}
+function aImg(n,alt,cls){return '<img'+(cls?' class="'+cls+'"':'')+' src="'+A+n+'" alt="'+h(alt||'')+'" draggable="false" decoding="async">'}
+function backLink(href){return '<a class="back" href="'+href+'"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 13H5M12 6l-7 7 7 7"/></svg>返回</a>'}
+function abWrap(cls,inner){return '<div class="wrap page"><div class="ab '+cls+'">'+inner+'</div></div>'}
+
 function viewAbout(){
-  return '<div class="wrap page"><div class="about"><div class="atext">'+aboutHTML(DB.site.about)+'</div><hr class="dash">'+(DB.site.about_image?'<img src="'+h(U(DB.site.about_image,1200))+'" alt="展場一隅">':'')+'</div></div>';
+  var it=[['concept','01','展覽理念','#f3b92f','ab1.png'],['visual','02','主視覺設計','#7fb2e0','ab2.png'],['ticket','03','票券設計','#e98d8d','ab3.png']];
+  return abWrap('',backLink('#home')+
+    '<div class="ab-h">'+ticksSide(-1)+TC('<h1>關於展覽</h1>','ab-ht',3,2.2)+ticksSide(1)+'</div>'+
+    it.map(function(x,i){return '<a class="abc" href="#about-'+x[0]+'" style="--c:'+x[3]+'">'+TC('<div class="abt"><span class="n">'+x[1]+'</span><i>|</i>'+x[2]+'</div><div class="abi">'+aImg(x[4],'')+'</div><span class="chv">'+chev()+'</span>','',5+i*4,3.2)+'</a>'}).join(''));
 }
+
+/* --- 影片:YouTube / 雲端硬碟 / mp4 都可以;先顯示封面,按了才載入 --- */
+function vidHTML(){
+  var src=String(DB.site.about_video||DB.site.egg_video||'').trim(),poster=String(DB.site.about_poster||'').trim();
+  var yt=src.match(YTRE),bg=poster?U(poster,1400):(yt?'https://i.ytimg.com/vi/'+yt[1]+'/hqdefault.jpg':'');
+  return '<div class="vid" id="abVid"'+(bg?' style="background-image:url(\''+h(bg)+'\')"':'')+'>'+
+    (src?'<button type="button" class="vplay" data-act="vplay" aria-label="播放影片"><span><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span></button>':'<div class="ph" style="position:absolute;inset:0;display:grid;place-items:center;color:#d8c8b4">影片準備中</div>')+'</div>';
+}
+function playAboutVid(){
+  var box=document.getElementById('abVid');if(!box)return;
+  var src=String(DB.site.about_video||DB.site.egg_video||'').trim(),yt=src.match(YTRE),dr=src.match(/drive\.google\.com\/file\/d\/([\w-]+)/),html;
+  if(yt)html='<iframe src="https://www.youtube-nocookie.com/embed/'+yt[1]+'?autoplay=1&playsinline=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="展覽影片"></iframe>';
+  else if(dr)html='<iframe src="https://drive.google.com/file/d/'+dr[1]+'/preview" allow="autoplay; fullscreen" allowfullscreen title="展覽影片"></iframe>';
+  else html='<video src="'+h(/^https?:\/\//.test(src)?src:A+src)+'" controls autoplay playsinline controlslist="nodownload"></video>';
+  box.innerHTML=html;
+}
+
+/* --- 展覽理念 --- */
+function believeCard(after){
+  var body=after?
+    '<p>每個人都有不同的生活經歷,也有自己感受世界、表達生活的方式。無論是快樂、難過,還是生活中那些看似平凡的片刻,都可能成為創作的一部分。<span class="bt ul" style="display:inline">每一種真實的表達,都值得被看見。</span></p>':
+    '<p>每個人都有不同的生活經歷,<br>也有自己感受世界、表達生活的方式。<br>無論是快樂、難過,還是生活中那些看似平凡的片刻,<br>都可能成為創作的一部分。</p><p class="bt">每一種真實的表達,都值得被看見。</p>';
+  var head=after?'<span class="mk">我們相信</span><span class="hl2"><span>創作不需要藝術家的身分。</span></span><hr>':'<span class="mk">我們相信</span><h2><span class="ul">創作不需要藝術家的身分。</span></h2>';
+  return '<div class="bel'+(after?' af':'')+'">'+TC(head+body+aImg('flower.png','','fl'),'',after?15:13,3.2,after?'<svg class="clip" viewBox="0 0 34 80" fill="none" stroke="#b9854a" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 10v46a9 9 0 0 1-18 0V14a13 13 0 0 1 26 0v42"/></svg>':'')+'</div>';
+}
+function viewConcept(){
+  var after=afterOpen(),body;
+  if(!after){
+    body=TC('<div class="mkrow"><span class="mk">展覽之前</span>'+ticksSide(1)+'</div>'+
+      '<div class="row2"><p>紐約大都會藝術博物館<br>每兩年會舉辦員工藝術展,<br>不論職位,只要有創作,<br><span class="ul">就能讓自己的作品被看見。</span></p>'+aImg('met.png','紐約大都會藝術博物館','pic')+'</div>'+
+      '<div class="row2">'+aImg('chars.png','','pic')+'<div class="bubs"><div class="bub">我最近在學畫畫耶!</div><div class="bub s">那可以辦展覽了吧!</div><div class="bub">一個人辦展好像太有負擔了,不然我們邀請大家一起來辦個聯展?</div></div></div>','cn-a',9,3.2)+believeCard(false);
+  }else{
+    body='<div class="vwrap"><div class="tagw">'+TC('<span class="mk" style="background:linear-gradient(transparent 62%,#fbd45e 62% 92%,transparent 92%);transform:none;font-size:1.6rem">展覽之前</span>','',2,2)+'</div>'+
+      TC('<div class="vbox">'+vidHTML()+'</div>','vfr',4,3,'<i class="tape"></i>')+'</div>'+
+      '<div class="strow">'+aImg('bldg.png','')+'<p>紐約大都會藝術博物館每兩年會舉辦一場<mark>員工藝術展</mark>,不論職位,只要有創作,就能讓自己的作品被看見。</p></div>'+
+      '<div class="strow">'+aImg('chars2.png','')+'<div class="bubs"><div class="bub">「我最近在學畫畫耶!」</div><div class="bub s">「那可以辦展覽了吧!」</div><div class="bub">「一個人辦展好像太有負擔了,不然我們邀請大家一起辦個聯展?」</div></div></div>'+believeCard(true);
+  }
+  return abWrap('cn'+(after?' after':''),backLink('#about')+body);
+}
+
+/* --- 主視覺設計 --- */
+function eraCard(cls,a,b,intro,items,seed){
+  return '<div class="era '+cls+'">'+TC('<div class="eh"><div class="etag"><b>'+a+'</b><small>'+b+'</small></div><p>'+intro+'</p></div><div class="ic">'+
+    items.map(function(x){return '<div>'+aImg(x[0],'')+'<b>'+x[1]+'</b><small>'+x[2]+'</small></div>'}).join('')+'</div>','',seed,3.2)+'</div>';
+}
+function viewVisual(){
+  return abWrap('vs',backLink('#about')+
+    '<div class="vs1">'+TC('<h2 class="vtt"><span>撕開一點,</span><span>看看我之所以是我</span></h2>'+
+      '<p>《我之所以是我》,包含著過去的我、現在的我,以及未來的我。</p>'+
+      '<p>認識一個人,就像剝洋蔥一樣,需要一層一層地了解,才能慢慢看見藏在裡面的故事。</p>'+
+      '<p>於是,我們選擇用撕紙的質感,<span class="ul">呈現這個慢慢認識、慢慢發現的過程。</span></p>','',6,3.2)+
+      '<div class="poster"><i class="tape"></i>'+aImg('poster.jpg','我之所以是我 藝術聯展 主視覺')+'</div></div>'+
+    '<hr class="dash">'+
+    eraCard('p','過去','(棕黃色)','那些走過的經歷、選擇與回憶,都成為了現在的我們。',[['i_sign.png','路牌','代表選擇,<br>也代表迷茫'],['i_photo.png','照片','代表回憶,<br>收藏曾經的片刻'],['i_band.png','OK繃','代表挫折,<br>以及經歷過的傷痕'],['i_flw.png','花朵','代表美好,<br>那些值得記住的事情']],8)+
+    eraCard('n','現在','(淡藍色)','正在發生的體驗,以及還沒被發現的可能。',[['i_brush.png','畫畫','在現場自由創作'],['i_gum.png','扭蛋','抽一份驚喜'],['i_daisy.png','花朵','一份送給自己的花'],['i_q.png','未知','還有更多,<br>等你發現']],12));
+}
+
+/* --- 票券設計 --- */
+var TK_TAB=0,TK_OPEN=false;
+function arrowSvg(){return '<svg viewBox="0 0 60 36" aria-hidden="true"><path d="M3 8c16 -10 38 -6 46 18"/><path d="M40 22l9 5 3-10"/></svg>'}
+function tkPanel(i){
+  if(i===0)return TC('<div class="p0"><div class="i">'+aImg('frameico.png','')+'</div><div class="t"><h2><span class="mk" style="font-size:inherit">想畫就畫</span></h2>'+
+    '<p>就像標題說的,想畫就畫!<br>不論是在展覽現場,還是未來的某一天,當你對這片空白有了想法,都可以拿起筆,留下些什麼。<br>塗鴉也好、寫字也好、畫畫也好。沒有指定主題,也沒有一定要完成的時間。</p><p><b>這片空白,交給你。</b></p></div></div>','pn',17,3.2);
+  if(i===1)return TC('<div class="p1"><div class="c1"><h2><span class="mk" style="font-size:inherit">一束送給自己的花</span></h2><div class="q">YOU DESERVE<br>A BOUQUET</div>'+
+    '<p>我們一直很喜歡這句話。<br>不論性別、年紀,無論你是誰,<br>收到花都可以是一件令人開心的事。<br>所以,我們先送你一朵雛菊。</p>'+
+    '<p class="tip"><b class="k">小巧思!</b><br>仔細看看花束下方,<br>有一個虛線畫成的大拇指。<br>試著把你的手放上去,<br>就像是親手拿著這束花一樣!</p></div>'+
+    '<div class="c2"><div class="flr">'+aImg('daisy.png','雛菊')+'<div><span class="tg">雛菊的花語</span><ul><li>純潔與天真</li><li>希望與新的開始</li><li>和平與快樂</li></ul></div></div>'+
+    '<p style="margin-top:.8em">你喜歡哪一個,就是我們<br>送給你的涵義!<br>還喜歡什麼花呢?<br>有機會的話,也為自己準備一束吧!</p>'+
+    '<div class="dz" style="margin-top:14px"><div class="mag" role="img" aria-label="花束下方的虛線大拇指放大圖"></div><div style="display:grid;grid-template-columns:44px 1fr;align-items:center;gap:4px">'+arrowSvg().replace('<svg','<svg class="arr"')+aImg('thumb.png','','th')+'</div></div></div></div>','pn',19,3.2);
+  return TC('<div class="p2"><div class="hd2">'+aImg('gum.png','')+'<div><h2><span class="mk b" style="font-size:inherit">兩張關於你的紙條</span></h2><p>我們準備了扭蛋!<br>裡面有兩張關於「你」的紙條:</p></div></div>'+
+    '<div class="nt"><div class="note a"><span class="qm">?</span><h3>我之所以是我</h3><p>一個關於自我的哲學問題。<br>沒有標準答案,<br>只是想邀請你<br>換個角度,想想自己。</p></div>'+
+    '<div class="note c"><h3>這是你嗎?</h3><p>一張「疑似是你的證據」紙條。<br>上面可能寫著你的某個小習慣、行為或生活片刻,<br>看看它說得準不準吧!</p></div></div>'+
+    '<div class="fx"><div class="band">'+aImg('washi.png','')+'<p>怕你弄丟,我們已經在票券上幫你留好位置了,<br>把抽到的兩張紙條貼上去吧!</p></div>'+'<div class="sc" role="img" aria-label="票券上的紙條黏貼處"><i class="tape blue"></i><div class="sci"><i></i></div></div></div></div>','pn blue',21,3.2);
+}
+function tkHTML(){
+  var N=['想畫就畫','一束送給自己的花','兩張關於你的紙條'],C=['y','y','b'];
+  return '<div class="tkimg"><img src="'+A+'ticket.jpg" alt="票券展開圖" draggable="false">'+
+    [0,1,2].map(function(i){return '<button type="button" class="hz z'+i+(TK_TAB===i?' on':'')+'" data-act="tk" data-i="'+i+'" aria-label="'+N[i]+'"></button>'}).join('')+'</div>'+
+    '<div class="tkb-row" role="tablist">'+N.map(function(n,i){return '<button type="button" role="tab" class="tkb '+C[i]+(TK_TAB===i?' on':'')+'" aria-selected="'+(TK_TAB===i)+'" data-act="tk" data-i="'+i+'">'+n+'</button>'}).join('')+'</div>'+tkPanel(TK_TAB);
+}
+function surHTML(){
+  return '<button type="button" class="surb" data-act="sur" aria-expanded="'+TK_OPEN+'"><i class="hr"></i>'+aImg('block.png','')+'<span class="surp">未實現的驚喜<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1l9 6-9 6z"/></svg></span><i class="hr"></i></button>'+
+    (TK_OPEN?TC('<p class="sh"><span>任何人的創作,都值得被展出。</span></p><div class="sv"><video src="'+A+'unfold.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="畫框翻轉摺疊示範"></video><div class="t"><p style="font-size:.9rem;letter-spacing:.1em;line-height:1.95">所以,我們試著讓票券上的畫框翻轉、摺疊,成為一個真正的展示作品的小畫框。</p><p style="font-size:.9rem;letter-spacing:.1em;line-height:1.95;margin-top:.8em">讓你也能親手為自己的創作裱上畫框。</p></div></div>','pn',23,3.2):'<p class="surs">看看原本想藏在票券裡的設計...</p>');
+}
+function viewTicket(){
+  var ar='<svg viewBox="0 0 30 26" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 4c6 8 12 12 22 12M18 11l8 5-9 5"/></svg>';
+  return abWrap('tk',backLink('#about')+
+    '<div class="tk-h">'+TC('<h1>不只是一張入場券</h1>','tkt',2,2.2)+'</div>'+
+    '<p class="tk-p">在電卡索,我們一直希望票券不只是活動結束後,被收起來的一張紙。<br>所以每次設計票券時,我們都會試著留下一些可以參與、可以改變的空間。<br>讓大家在活動中留下自己的痕跡,也讓當下的想法與感受,在活動結束後仍能繼續延伸。</p>'+
+    '<p class="tk-hint">'+ar+'<span>點點票券,看看我們藏了什麼小巧思!</span>'+ar.replace('<svg','<svg style="transform:scaleX(-1)"')+'</p>'+
+    '<div id="tkWrap" style="display:grid;gap:14px">'+tkHTML()+'</div><div class="sur" id="surWrap">'+surHTML()+'</div>');
+}
+
+/* --- 撕紙邊:依每張卡片實際大小畫出不規則邊緣(寬高變動時自動重畫)--- */
+var tornRO=null;
+function tornPx(el){
+  var w=el.offsetWidth,hh=el.offsetHeight;if(w<24||hh<24)return;
+  var seed=+el.getAttribute('data-ts')||7,amp=+(el.getAttribute('data-amp')||3),step=10,s=(seed*7919)%233280||1;
+  var r=function(){s=(s*9301+49297)%233280;return s/233280};
+  function edge(len){var n=Math.max(4,Math.round(len/step)),a=[],o=[],i;for(i=0;i<=n;i++)a.push(r());
+    for(i=0;i<=n;i++){var v=(a[Math.max(0,i-1)]+2*a[i]+a[Math.min(n,i+1)])/4;o.push([i/n*len,Math.pow(v,1.25)*amp+(r()<.1?r()*amp*.8:0)])}return o}
+  var t=edge(w),rt=edge(hh),b=edge(w),lf=edge(hh),p=[],i;
+  t.forEach(function(q){p.push(q[0].toFixed(1)+'px '+q[1].toFixed(1)+'px')});
+  for(i=1;i<rt.length;i++)p.push((w-rt[i][1]).toFixed(1)+'px '+rt[i][0].toFixed(1)+'px');
+  for(i=b.length-2;i>=0;i--)p.push(b[i][0].toFixed(1)+'px '+(hh-b[i][1]).toFixed(1)+'px');
+  for(i=lf.length-2;i>0;i--)p.push(lf[i][1].toFixed(1)+'px '+lf[i][0].toFixed(1)+'px');
+  el.style.clipPath='polygon('+p.join(',')+')';
+}
+function watchTorn(root){
+  var list=(root||document).querySelectorAll('.tc');
+  if(!tornRO&&window.ResizeObserver)tornRO=new ResizeObserver(function(es){es.forEach(function(e){tornPx(e.target)})});
+  list.forEach(function(el){tornPx(el);if(tornRO)tornRO.observe(el)});
+}
+function aboutKey(r){return r==="about"?viewAbout():r==="about-concept"?viewConcept():r==="about-visual"?viewVisual():r==="about-ticket"?viewTicket():null}
 function viewStatus(){return '<div class="wrap page"><div class="about"><p class="a-h2">資料狀態</p><p class="a-p">來源:'+h(STATUS.src)+'<br>'+h(STATUS.msg)+'<br>目前顯示:作品 '+DB.works.length+' 件、創作者 '+DB.artists.length+' 位<br>展覽之後:'+(afterOpen()?'已開放':'尚未開放')+'(開放日 '+afterDate()+',台灣今天 '+todayTW()+')<br>about 開頭:'+h(String(DB.site.about).slice(0,30))+'</p></div></div>'}
 var recTab="展場";
 function recHTML(){
@@ -513,7 +814,7 @@ function route(){
   else if(r==="works"){html=viewWorks();key="works"}
   else if(r==="artists"){html=viewArtists();key="artists"}
   else if((m=r.match(/^artist-(\w+)$/))){focus=m[1];openA[focus]=true;html=viewArtists(focus);key="artists"}
-  else if(r==="about"){html=viewAbout();key="about"}
+  else if(r==="about"||r==="about-concept"||r==="about-visual"||r==="about-ticket"){html=aboutKey(r);key="about"}
   else if(r==="records"){html=viewRecords();key="records"}
   else if(r==="status"){html=viewStatus();key="status"}
   else if(r==="egg"){if(afterOpen()){pendingEgg=true;location.replace("#home");return}html=viewEgg();key="egg"}
@@ -529,6 +830,7 @@ function route(){
   document.querySelectorAll("#drawer a").forEach(function(a){var t=a.getAttribute("data-nav");a.setAttribute("aria-current",(t===r||(t==="artists"&&key==="artists")||(t==="works"&&key==="work")||(t==="home"&&key==="home"))?"page":"false")});
   if(focus){var el=document.getElementById("artist-"+focus);if(el)setTimeout(function(){el.scrollIntoView({block:"start"})},30)}else window.scrollTo(0,0);
   var q=document.querySelector("#app input[inputmode]");if(q&&key==="nf")q.focus({preventScroll:true});
+  if(key==="about")watchTorn(app);
   if(key==="egg")initEgg();
   if(key==="join")initJoin();
   if(key==="gallery")initGallery();
@@ -565,6 +867,9 @@ document.addEventListener("click",function(e){
   else if(act==="zout")zoomBy(1/1.5);
   else if(act==="zreset")zReset(true);
   else if(act==="egg")startEgg();
+  else if(act==="vplay")playAboutVid();
+  else if(act==="tk"){TK_TAB=+b.getAttribute("data-i");var tw=document.getElementById("tkWrap");if(tw){tw.innerHTML=tkHTML();watchTorn(tw)}}
+  else if(act==="sur"){TK_OPEN=!TK_OPEN;var sw=document.getElementById("surWrap");if(sw){sw.innerHTML=surHTML();watchTorn(sw)}}
   else if(act==="mclose")closeModal();
   else if(act==="lbclose")closeLB();
   else if(act==="acc"){var id=b.getAttribute("data-id");openA[id]=!openA[id];var sec=document.getElementById("artist-"+id);sec.classList.toggle("open",!!openA[id]);b.setAttribute("aria-expanded",String(!!openA[id]))}
