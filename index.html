@@ -815,7 +815,7 @@ function watchTorn(root){
   list.forEach(function(el){tornPx(el);if(tornRO)tornRO.observe(el)});
 }
 function aboutKey(r){return r==="about"?viewAbout():r==="about-concept"?viewConcept():r==="about-visual"?viewVisual():r==="about-ticket"?viewTicket():null}
-function viewStatus(){return '<div class="wrap page"><div class="about"><p class="a-h2">資料狀態</p><p class="a-p">來源:'+h(STATUS.src)+'<br>'+h(STATUS.msg)+'<br>目前顯示:作品 '+DB.works.length+' 件、創作者 '+DB.artists.length+' 位<br>展覽之後:'+(afterOpen()?'已開放':'尚未開放')+'(after_date 讀到:「'+h(String(DB.site.after_date||''))+'」→ '+(afterDate()||'未設定')+',台灣今天 '+todayTW()+')<br>about 開頭:'+h(String(DB.site.about).slice(0,30))+'</p></div></div>'}
+function viewStatus(){return '<div class="wrap page"><div class="about"><p class="a-h2">資料狀態</p><p class="a-p">網頁版本:2026-11-22 v7(創作者一覽單行版)<br>來源:'+h(STATUS.src)+'<br>'+h(STATUS.msg)+'<br>目前顯示:作品 '+DB.works.length+' 件、創作者 '+DB.artists.length+' 位<br>展覽之後:'+(afterOpen()?'已開放':'尚未開放')+'(after_date 讀到:「'+h(String(DB.site.after_date||''))+'」→ '+(afterDate()||'未設定')+',台灣今天 '+todayTW()+')<br>about 開頭:'+h(String(DB.site.about).slice(0,30))+'</p></div></div>'}
 var recTab="展場";
 function recHTML(){
   var list=DB.records.filter(function(r){return r.type===recTab}).sort(function(a,b){return a.order-b.order});
