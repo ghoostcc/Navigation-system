@@ -310,6 +310,9 @@ svg{display:block}
 .titlerow.nb h1,.titlerow.nb .by{grid-column:1}
 /* ===== 關於展覽(首頁 + 三個子頁)===== */
 .ab{max-width:720px;margin-inline:auto;display:grid;gap:24px;font-family:var(--font-body);color:var(--text)}
+.back.jb,.back.gb{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-brush);font-size:1.05rem;letter-spacing:.1em;color:var(--text)}
+.back.jb{justify-self:start;margin-bottom:6px}
+.back.gb{position:absolute;z-index:6;left:16px;top:calc(var(--te) + 10px);text-shadow:0 1px 6px rgba(0,0,0,.7)}
 .ab .back{justify-self:start;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-brush);font-size:1.05rem;letter-spacing:.1em}
 .tcw{position:relative;filter:drop-shadow(0 5px 8px rgba(0,0,0,.4))}
 .tc{position:relative;background:linear-gradient(#fcebd8,#f5ddc3);color:var(--ink);padding:22px 20px}
@@ -1066,7 +1069,7 @@ function viewAfter(){
 
 /* ---- 我也想參展:觀眾投稿表單 ---- */
 function viewJoin(){
-  return '<div class="wrap page"><div class="join">'+
+  return '<div class="wrap page"><div class="join">'+backLink('#after').replace('class="back"','class="back jb"')+
    '<div class="note-w"><div class="note"><p class="n1">你可以現在畫,也可以帶回家,<br>等某一天想畫的時候再畫。</p><p class="n2">將你票券的「想畫就畫」空白畫布上的創作拍照上傳,<br>就能讓它成為這場展覽的一部分。</p></div><i class="tape y"></i></div>'+
    '<div class="jcard-w"><form class="jcard" id="joinForm" novalidate>'+
    '<div class="upl-row">'+ticksSide(-1)+'<div class="upl"><input type="file" id="jFile" class="vh" accept="image/*"><label class="upl-in" id="jUpl" for="jFile"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg><span>上傳作品照片</span></label></div>'+ticksSide(1)+'</div>'+
@@ -1134,7 +1137,7 @@ function viewGallery(){
     slots+='<a class="gslot'+sn+'" href="#gal-'+h(gSlug(g))+'"><span class="gfw">'+LAMP+'<span class="gframe"><img onload="galFit(this)" src="'+h(U(g.image,800))+'" alt="'+h(g.title||g.nickname)+'" loading="lazy" draggable="false"></span></span><span class="gplaq">· '+h(g.nickname)+' ·</span></a>';
   }
   var dots='';for(i=0;i<pages;i++)dots+='<button type="button" class="gdot" aria-label="第 '+(i+1)+' 頁"></button>';
-  return '<div class="gscene"><div class="gwall"></div><div class="gfloor"></div>'+
+  return '<div class="gscene"><div class="gwall"></div><div class="gfloor"></div>'+backLink('#after').replace('class="back"','class="back gb"')+
     (items.length?'':'<p class="gempty">作品即將上牆</p>')+
     '<div class="gtrack" id="galTrack" data-n="'+N+'" style="--n:'+N+'" data-pages="'+pages+'">'+slots+'</div>'+
     '<button type="button" class="gnav prev" id="galPrev" aria-label="上一頁">'+sv('<path d="m15 5-7 7 7 7"/>',24,2.6)+'</button>'+
