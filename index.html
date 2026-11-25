@@ -242,7 +242,11 @@ svg{display:block}
 .egg-poster>img.lg{width:min(62%,360px);height:auto;object-fit:contain}
 .egg-poster .ph{position:absolute;inset:0;display:grid;place-items:center;background:rgba(20,16,14,.78);color:var(--muted);letter-spacing:.12em}
 .egg-stage video,.egg-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;object-fit:contain}
-.egg-cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;min-height:92px}
+.egg-cta{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;align-items:start;min-height:120px}
+.egg-b{display:grid;justify-items:center;gap:10px;animation:eggIn .6s ease both}
+.egg-b .pill{width:100%;justify-content:center;padding-inline:8px;white-space:nowrap}
+.egg-b small{font-size:clamp(.72rem,3vw,.88rem);letter-spacing:.06em;color:var(--muted);text-align:center;line-height:1.6;text-wrap:balance}
+@keyframes eggIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .join{max-width:620px;margin-inline:auto;display:grid;gap:30px}
 .note-w{position:relative;filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
 .note{background:linear-gradient(#fbe8d5,#f4dac0);color:var(--ink);text-align:center;padding:32px 22px;display:grid;gap:12px}
@@ -1008,15 +1012,14 @@ function viewEgg(){
   var poster=String(DB.site.egg_poster||'').trim();
   return '<div class="wrap page egg"><div class="egg-wrap"><div class="egg-stage" id="eggStage"><div class="egg-poster" id="eggPoster">'+
     (poster?'<img src="'+h(U(poster,1600))+'" alt="">':'<img class="lg" src="'+A+'logo-cover.png" alt="'+h(DB.site.title+' '+DB.site.subtitle)+'">')+
-    '</div></div></div><div class="egg-cta" id="eggCta">'+ticksSide(-1)+
-    '<button type="button" class="pill" data-act="egg"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>開始觀看</button>'+ticksSide(1)+'</div></div>';
+    '</div></div></div><div class="egg-cta" id="eggCta"></div></div>';
 }
-function initEgg(){var b=document.getElementById('eggStage');if(b)b.style.clipPath=tornBox(22,1.4,11)}
-var eggDoneFlag=false;
+var eggDoneFlag=false,eggT=0;
+function initEgg(){var b=document.getElementById('eggStage');if(b)b.style.clipPath=tornBox(22,1.4,11);startEgg()}
 function eggDone(){
   if(eggDoneFlag)return;eggDoneFlag=true;
   var c=document.getElementById('eggCta');
-  if(c)c.innerHTML='<a class="pill" href="#about">想了解更多</a><a class="pill blue" href="#after">展覽之後</a>';
+  if(c)c.innerHTML='<div class="egg-b"><a class="pill" href="#about">想了解更多</a><small>來看看展覽的各個設計細節</small></div><div class="egg-b"><a class="pill blue" href="#after">展覽之後</a><small>看看大家的我之所以是我</small></div>';
 }
 function ytLoad(cb){
   if(window.YT&&YT.Player){cb();return}
@@ -1024,24 +1027,26 @@ function ytLoad(cb){
   window.onYouTubeIframeAPIReady=function(){if(prev)prev();cb()};
   if(!document.getElementById('ytapi')){var s=document.createElement('script');s.id='ytapi';s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s)}
 }
+function eggLater(){if(eggT||eggDoneFlag)return;eggT=setTimeout(eggDone,5000)}
 function startEgg(){
+  clearTimeout(eggT);eggT=0;
   var st=document.getElementById('eggStage'),po=document.getElementById('eggPoster');if(!st)return;
   eggDoneFlag=false;document.getElementById('eggCta').innerHTML='';
   var src=String(DB.site.egg_video||'').trim();
   var yt=src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/),dr=src.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
   if(!src){po.insertAdjacentHTML('beforeend','<div class="ph">影片準備中</div>');eggDone();return}
-  po.hidden=true;
   if(yt){
     st.insertAdjacentHTML('beforeend','<div id="eggYT"></div>');
-    ytLoad(function(){new YT.Player('eggYT',{videoId:yt[1],width:'100%',height:'100%',playerVars:{autoplay:1,playsinline:1,rel:0},events:{onStateChange:function(e){if(e.data===0)eggDone()},onError:function(){eggDone()}}})});
+    ytLoad(function(){new YT.Player('eggYT',{videoId:yt[1],width:'100%',height:'100%',playerVars:{autoplay:1,playsinline:1,rel:0},events:{onStateChange:function(e){if(e.data===1)eggLater();if(e.data===0)eggDone()},onError:function(){eggDone()}}})});
     setTimeout(function(){if(!(window.YT&&YT.Player)){var d=document.getElementById('eggYT');if(d)d.outerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+yt[1]+'?autoplay=1&playsinline=1&rel=0" allow="autoplay; fullscreen" allowfullscreen title="展覽影片"></iframe>';eggDone()}},6000);
   }else if(dr){
     st.insertAdjacentHTML('beforeend','<iframe src="https://drive.google.com/file/d/'+dr[1]+'/preview" allow="autoplay; fullscreen" allowfullscreen title="展覽影片"></iframe>');
-    eggDone();
+    po.hidden=true;eggLater();
   }else{
+    po.hidden=true;
     st.insertAdjacentHTML('beforeend','<video src="'+h(/^https?:\/\//.test(src)?src:A+src)+'" controls autoplay playsinline controlslist="nodownload"></video>');
     var v=st.querySelector('video');
-    v.addEventListener('ended',eggDone);
+    v.addEventListener('ended',eggDone);v.addEventListener('playing',eggLater);
     v.addEventListener('error',function(){st.insertAdjacentHTML('beforeend','<div class="ph" style="position:absolute;inset:0;background:#14100e">影片載入失敗,請稍後再試</div>');eggDone()});
     var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});
   }
